@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
 // team
@@ -9,7 +9,7 @@ import { BsFacebook } from "react-icons/bs";
 import { AiFillTwitterCircle } from "react-icons/ai";
 const EditAbout = () => {
   const inputRef = useRef(null);
-  const push = useNavigate();
+
   const [errors, setErr] = useState(false);
   const [missionErr, setMissionERR] = useState("");
   const [Vision, setVision] = useState("Vision");
@@ -40,7 +40,7 @@ const EditAbout = () => {
         withCredentials: true,
       }
     ).then((response) => {
-      if (response.data == "OtherTexts POSTED") {
+      if (response.data === "OtherTexts POSTED") {
         setErr(false);
         setText("");
         //  sessionStorage.setItem("userId", response.data.id);
@@ -63,7 +63,7 @@ const EditAbout = () => {
         withCredentials: true,
       }
     ).then((response) => {
-      if (response.data == "OtherTexts POSTED") {
+      if (response.data === "OtherTexts POSTED") {
         setMissionERR(false);
         setMission("");
 
@@ -90,7 +90,7 @@ const EditAbout = () => {
         withCredentials: true,
       }
     ).then((response) => {
-      if (response.data.msg == "deleted obj") {
+      if (response.data.msg === "deleted obj") {
         window.location.reload();
       }
     });
@@ -99,6 +99,7 @@ const EditAbout = () => {
   const [obgErr, setobgErr] = useState("");
   const [Objective, setObj] = useState("");
   const [type, setType] = useState("Objectives");
+
   const getDetails = (e) => {
     setObj(e.target.value);
   };
@@ -116,7 +117,7 @@ const EditAbout = () => {
       }
     ).then((response) => {
       console.log(response);
-      if (response.data == "OtherTexts POSTED") {
+      if (response.data === "OtherTexts POSTED") {
         setobgErr(false);
         setObj("");
         // return window.location.reload();
@@ -139,7 +140,7 @@ const EditAbout = () => {
     Axios.delete(`http://localhost:1111/Admin/deleteTeam/${vall}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "deleted team") {
+      if (response.data.msg === "deleted team") {
         //my-adv/128
         //  window.location.reload();
       }
@@ -184,7 +185,7 @@ const EditAbout = () => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-      if (response.data.msg == "NEW TEAM MEMBER ADD") {
+      if (response.data.msg === "NEW TEAM MEMBER ADD") {
         setTeamerr(false);
         setFname("");
         setLname("");
@@ -239,7 +240,7 @@ const EditAbout = () => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-      if (response.data.msg == "Testimonies POSTED") {
+      if (response.data.msg === "Testimonies POSTED") {
         setTestmonyerr(false);
         setfnames("");
         setlnames("");
@@ -264,7 +265,7 @@ const EditAbout = () => {
     Axios.delete(`http://localhost:1111/Admin/deleteTestmony/${delId}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Testimonies DELETED") {
+      if (response.data.msg === "Testimonies DELETED") {
         window.location.reload();
       }
     });
@@ -410,6 +411,7 @@ const EditAbout = () => {
                   <div class="container">
                     <div class="section-header">
                       <h2>Mission</h2>
+                      {/* mapping */}
                       {miss.length > 0 ? (
                         miss.map((val) => (
                           <ul>

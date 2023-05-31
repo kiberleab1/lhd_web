@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-
-import emailjs from "@emailjs/browser";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
 const Contact = () => {
@@ -31,56 +29,18 @@ const Contact = () => {
     Axios.post(`http://localhost:1111/lhd/Contact`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (
-        response.data.msg ===
-        `Thank you for contacting us and will respond to your quires.  Please\r\n  
-				do reach out to the following emails and we will be able to respond to 
-				you as soon as possible.
-				antenanie35@gmail.com or anduye2@gmail.com,\r\n
-        also you can contact kiberleabdemassie@gmail.com`
-      ) {
+      if (response.data.msg === `Thank you`) {
         setname("");
         setemail("");
         setmessage("");
         seterr(false);
         // // return push("/Admin/Home");
-        emailjs
-          .sendForm(
-            "service_3pv0i72",
-            "template_goh566v",
-            form.current,
-            "dvcmF-AK3PcrB5obN"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
-        emailjs
-          .sendForm(
-            "service_3pv0i72",
-            "template_raa216t",
-            form.current,
-            "dvcmF-AK3PcrB5obN"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
       } else {
         // window.location.href =
         //   "mailto:zemelatmen@gmail.com?subject='Hello from Abstract!'&body='Just popped in to say hello'";
         seterr(response.data);
       }
     });
-    e.target.reset();
   };
   return (
     <>
