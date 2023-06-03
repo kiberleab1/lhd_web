@@ -7,7 +7,7 @@ const Experience = () => {
   const [type, setType] = useState("");
   const [detailText, setDetailText] = useState("");
   const [client, setClient] = useState("");
-  const [lhd, setLhd] = useState("lhd");
+  const [lhd, setLhd] = useState("LHD");
   const getType = (e) => {
     setType(e.target.value);
   };
@@ -28,7 +28,7 @@ const Experience = () => {
     Axios.post(`http://localhost:1111/Admin/editExperiance`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Expirence POSTED") {
+      if (response.data.msg === "Expirence POSTED") {
         setType("");
         setDetailText("");
         setClient("");
@@ -74,7 +74,7 @@ const Experience = () => {
     Axios.post(`http://localhost:1111/register_research`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Research POSTED") {
+      if (response.data.msg === "Research POSTED") {
         setEerr(false);
         setRtype("");
         setDetailText("");
@@ -128,7 +128,7 @@ const Experience = () => {
     Axios.delete(`http://localhost:1111/Admin/deleteResearch/${id}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Research DELETED") {
+      if (response.data.msg === "Research DELETED") {
         window.location.reload();
       }
     });
@@ -173,15 +173,42 @@ const Experience = () => {
     Axios.delete(`http://localhost:1111/Admin/Experiance/delete/${delId}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Experince DELETED") {
+      if (response.data.msg === "Experince DELETED") {
         window.location.reload();
+      }
+    });
+  };
+  const [expText, setexpText] = useState("");
+  const [expTextErr, setexperr] = useState("");
+  const getexpDetails = (e) => {
+    setexpText(e.target.value);
+  };
+  const submitExpText = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+
+    formData.append("detailText", expText);
+    formData.append("type", "experiance");
+    formData.append("page", "experiance");
+    Axios.post(
+      `http://localhost:1111/Admin/editAbout/saveOthersText`,
+      formData,
+      {
+        withCredentials: true,
+      }
+    ).then((response) => {
+      if (response.data.msg === "OtherTexts POSTED") {
+        setexperr(false);
+        setexpText("");
+      } else {
+        setexperr(response.data);
       }
     });
   };
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Experiance</span>
             <br />
@@ -191,19 +218,21 @@ const Experience = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
-          <div class="row">
-            <div class="col-3">
-              <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item">Research, Survey &amp; Assessment</a>
+        <section id="contact" className="wow fadeInUp">
+          <div className="row">
+            <div className="col-3">
+              <div className="list-group" id="list-tab" role="tablist">
+                <Link className="list-group-item">
+                  Research, Survey &amp; Assessment
+                </Link>
                 <ul>
                   <div
-                    class="list-group collapse"
+                    className="list-group collapse"
                     id="homeSubmenu"
                     role="tablist"
                   >
                     <a
-                      class="list-group-item list-group-item-action active"
+                      className="list-group-item list-group-item-action active"
                       id="list-health-list"
                       data-toggle="list"
                       href="#list-health"
@@ -213,7 +242,7 @@ const Experience = () => {
                       Health
                     </a>{" "}
                     <a
-                      class="list-group-item list-group-item-action"
+                      className="list-group-item list-group-item-action"
                       id="list-food-list"
                       data-toggle="list"
                       href="#list-food"
@@ -223,7 +252,7 @@ const Experience = () => {
                       Nutrition & Food Security{" "}
                     </a>{" "}
                     <a
-                      class="list-group-item list-group-item-action"
+                      className="list-group-item list-group-item-action"
                       id="list-water-list"
                       data-toggle="list"
                       href="#list-water"
@@ -233,7 +262,7 @@ const Experience = () => {
                       Water, Sanitation & Hygiene (WaSH)
                     </a>{" "}
                     <a
-                      class="list-group-item list-group-item-action"
+                      className="list-group-item list-group-item-action"
                       id="list-hiv-list"
                       data-toggle="list"
                       href="#list-hiv"
@@ -245,7 +274,7 @@ const Experience = () => {
                   </div>
                 </ul>
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-strat-list"
                   data-toggle="list"
                   href="#list-strat"
@@ -255,7 +284,7 @@ const Experience = () => {
                   Strategic &amp; Training Materials Development
                 </a>{" "}
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-messages-list"
                   data-toggle="list"
                   href="#list-messages"
@@ -265,7 +294,7 @@ const Experience = () => {
                   Technical Assistance
                 </a>{" "}
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-trian-list"
                   data-toggle="list"
                   href="#list-trian"
@@ -275,7 +304,7 @@ const Experience = () => {
                   Providing Training
                 </a>{" "}
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-settings-list"
                   data-toggle="list"
                   href="#list-settings"
@@ -286,15 +315,15 @@ const Experience = () => {
                 </a>
               </div>
             </div>
-            <div class="col-8">
-              <div class="tab-content" id="nav-tabContent">
+            <div className="col-8">
+              <div className="tab-content" id="nav-tabContent">
                 <div
-                  // class="tab-pane fade show active"
+                  // className="tab-pane fade show active"
                   id="list-health"
                   role="tabpanel"
                   aria-labelledby="list-health-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead />
                     <tbody>
                       {all.length > 0 ? (
@@ -328,7 +357,7 @@ const Experience = () => {
                                   <td>
                                     <button
                                       type="submit"
-                                      class="btn btn-primary "
+                                      className="btn btn-primary "
                                       onClick={() => deleteResearch(val.id)}
                                     >
                                       Delete
@@ -339,7 +368,7 @@ const Experience = () => {
                                     <Link to={`/edit/exp/one/${val.id}`}>
                                       <button
                                         type="submit"
-                                        class="btn btn-primary"
+                                        className="btn btn-primary"
                                       >
                                         Edit
                                       </button>
@@ -353,20 +382,20 @@ const Experience = () => {
                           </tr>
                         ))
                       ) : (
-                        <h3>No health data updated</h3>
+                        <h3>No health experiance data updated</h3>
                       )}
                     </tbody>
                   </table>
                 </div>
 
                 <div
-                  // class="tab-pane fade show"
-                  // class="tab-pane fade show active"
+                  // className="tab-pane fade show"
+                  // className="tab-pane fade show active"
                   id="list-food"
                   role="tabpanel"
                   aria-labelledby="list-food-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead />
                     <tbody>
                       {Food.length > 0 ? (
@@ -400,7 +429,7 @@ const Experience = () => {
                                   <td>
                                     <button
                                       type="submit"
-                                      class="btn btn-primary "
+                                      className="btn btn-primary "
                                       onClick={() => deleteResearch(val.id)}
                                     >
                                       Delete
@@ -411,7 +440,7 @@ const Experience = () => {
                                     <Link to={`/edit/exp/one/${val.id}`}>
                                       <button
                                         type="submit"
-                                        class="btn btn-primary"
+                                        className="btn btn-primary"
                                       >
                                         Edit
                                       </button>
@@ -424,18 +453,18 @@ const Experience = () => {
                           </tr>
                         ))
                       ) : (
-                        <h4>No food exp updated</h4>
+                        <h4>No food experiance data updated</h4>
                       )}
                     </tbody>
                   </table>
                 </div>
                 <div
-                  // class="tab-pane fade show active"
+                  // className="tab-pane fade show active"
                   id="list-water"
                   role="tabpanel"
                   aria-labelledby="list-water-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead />
                     <tbody>
                       {water.length > 0 ? (
@@ -469,7 +498,7 @@ const Experience = () => {
                                   <td>
                                     <button
                                       type="submit"
-                                      class="btn btn-primary "
+                                      className="btn btn-primary "
                                       onClick={() => deleteResearch(val.id)}
                                     >
                                       Delete
@@ -480,7 +509,7 @@ const Experience = () => {
                                     <Link to={`/edit/exp/one/${val.id}`}>
                                       <button
                                         type="submit"
-                                        class="btn btn-primary"
+                                        className="btn btn-primary"
                                       >
                                         Edit
                                       </button>
@@ -499,12 +528,12 @@ const Experience = () => {
                   </table>
                 </div>
                 <div
-                  // class="tab-pane fade show active"
+                  // className="tab-pane fade show active"
                   id="list-hiv"
                   role="tabpanel"
                   aria-labelledby="list-hiv-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead />
                     <tbody>
                       {hiv.length > 0 ? (
@@ -538,7 +567,7 @@ const Experience = () => {
                                   <td>
                                     <button
                                       type="submit"
-                                      class="btn btn-primary "
+                                      className="btn btn-primary "
                                       onClick={() => deleteResearch(val.id)}
                                     >
                                       Delete
@@ -549,7 +578,7 @@ const Experience = () => {
                                     <Link to={`/edit/exp/one/${val.id}`}>
                                       <button
                                         type="submit"
-                                        class="btn btn-primary"
+                                        className="btn btn-primary"
                                       >
                                         Edit
                                       </button>
@@ -573,7 +602,7 @@ const Experience = () => {
                   role="tabpanel"
                   aria-labelledby="list-trian-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -596,7 +625,7 @@ const Experience = () => {
                             <td>
                               <button
                                 type="submit"
-                                class="btn btn-primary "
+                                className="btn btn-primary "
                                 onClick={() => DeleteExp(val.id)}
                               >
                                 Delete
@@ -605,7 +634,10 @@ const Experience = () => {
                             </td>
                             <td>
                               <Link to={`/experiance/edit/${val.id}`}>
-                                <button type="submit" class="btn btn-primary">
+                                <button
+                                  type="submit"
+                                  className="btn btn-primary"
+                                >
                                   Edit
                                 </button>
                               </Link>
@@ -614,18 +646,18 @@ const Experience = () => {
                           </tr>
                         ))
                       ) : (
-                        <h4>no train exp inserted</h4>
+                        <h4>No train exp data inserted</h4>
                       )}
                     </tbody>
                   </table>
                 </div>
                 <div
-                  // class="tab-pane fade"
+                  // className="tab-pane fade"
                   id="list-strat"
                   role="tabpanel"
                   aria-labelledby="list-strat-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -647,7 +679,7 @@ const Experience = () => {
                             <td>
                               <button
                                 type="submit"
-                                class="btn btn-primary "
+                                className="btn btn-primary "
                                 onClick={() => DeleteExp(val.id)}
                               >
                                 Delete
@@ -656,7 +688,10 @@ const Experience = () => {
                             </td>
                             <td>
                               <Link to={`/experiance/edit/${val.id}`}>
-                                <button type="submit" class="btn btn-primary">
+                                <button
+                                  type="submit"
+                                  className="btn btn-primary"
+                                >
                                   Edit
                                 </button>
                               </Link>
@@ -665,20 +700,20 @@ const Experience = () => {
                           </tr>
                         ))
                       ) : (
-                        <h4>no strat file inserted</h4>
+                        <h4>No strat file inserted</h4>
                       )}
                     </tbody>
                   </table>
                 </div>
 
                 <div
-                  // class="tab-pane fade"
+                  // className="tab-pane fade"
                   id="list-messages"
                   role="tabpanel"
                   aria-labelledby="list-messages-list"
                 >
                   <div>
-                    <table class="table table-striped">
+                    <table className="table table-striped">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -700,7 +735,7 @@ const Experience = () => {
                               <td>
                                 <button
                                   type="submit"
-                                  class="btn btn-primary "
+                                  className="btn btn-primary "
                                   onClick={() => DeleteExp(val.id)}
                                 >
                                   Delete
@@ -709,7 +744,10 @@ const Experience = () => {
                               </td>
                               <td>
                                 <Link to={`/experiance/edit/${val.id}`}>
-                                  <button type="submit" class="btn btn-primary">
+                                  <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                  >
                                     Edit
                                   </button>
                                 </Link>
@@ -718,19 +756,19 @@ const Experience = () => {
                             </tr>
                           ))
                         ) : (
-                          <h4>no assist file inserted</h4>
+                          <h4>No assist file inserted</h4>
                         )}
                       </tbody>
                     </table>
                   </div>
                 </div>
                 <div
-                  // class="tab-pane fade"
+                  // className="tab-pane fade"
                   id="list-settings"
                   role="tabpanel"
                   aria-labelledby="list-settings-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -752,7 +790,7 @@ const Experience = () => {
                             <td>
                               <button
                                 type="submit"
-                                class="btn btn-primary "
+                                className="btn btn-primary "
                                 onClick={() => DeleteExp(val.id)}
                               >
                                 Delete
@@ -761,7 +799,10 @@ const Experience = () => {
                             </td>
                             <td>
                               <Link to={`/experiance/edit/${val.id}`}>
-                                <button type="submit" class="btn btn-primary">
+                                <button
+                                  type="submit"
+                                  className="btn btn-primary"
+                                >
                                   Edit
                                 </button>
                               </Link>
@@ -771,7 +812,7 @@ const Experience = () => {
                           </tr>
                         ))
                       ) : (
-                        <h4>no proposal data inserted</h4>
+                        <h4>No proposal data inserted</h4>
                       )}
                     </tbody>
                   </table>
@@ -780,23 +821,23 @@ const Experience = () => {
             </div>
           </div>
         </section>
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="section-header" object="clientText">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="section-header" object="clientText">
                     <h2>Add or Edit Experiance</h2>
                   </div>
-                  <div class="form">
+                  <div className="form">
                     {/* <!-- Form itself --> */}
-                    <form class="well" id="contactForm" method="POST">
-                      <div class="control-group">
-                        <div class="form-group">
+                    <form className="well" id="contactForm" method="POST">
+                      <div className="control-group">
+                        <div className="form-group">
                           <select
                             name="type"
-                            class="selectpicker form-control"
+                            className="selectpicker form-control"
                             onChange={getType}
                             value={type}
                           >
@@ -811,11 +852,11 @@ const Experience = () => {
                           </select>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Experiance Detail"
                             id="name"
                             required
@@ -825,11 +866,11 @@ const Experience = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Client"
                             id="name"
                             required
@@ -839,11 +880,11 @@ const Experience = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="hidden"
-                            class="form-control"
+                            className="form-control"
                             id="name"
                             required
                             field="firm"
@@ -858,7 +899,7 @@ const Experience = () => {
 
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={submittExperince}
                       >
                         Add
@@ -869,21 +910,21 @@ const Experience = () => {
                 </div>
               </div>
             </div>
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="section-header" object="clientText">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="section-header" object="clientText">
                     <h2>Add or Edit Research</h2>
                   </div>
-                  <div class="form">
+                  <div className="form">
                     {/* <!-- Form itself --> */}
-                    <form name="sentMessage" class="well" id="contactForm">
-                      <div class="control-group">
-                        <div class="form-group">
+                    <form name="sentMessage" className="well" id="contactForm">
+                      <div className="control-group">
+                        <div className="form-group">
                           <select
                             name="Rtype"
-                            class="selectpicker form-control"
+                            className="selectpicker form-control"
                             onChange={getResearchType}
                             value={Rtypes}
                           >
@@ -898,11 +939,11 @@ const Experience = () => {
                           </select>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Title"
                             id="name"
                             required
@@ -912,11 +953,11 @@ const Experience = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Client"
                             id="name"
                             required
@@ -926,11 +967,11 @@ const Experience = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Methodlogy"
                             id="name"
                             required
@@ -940,11 +981,11 @@ const Experience = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Objective"
                             id="name"
                             required
@@ -960,7 +1001,7 @@ const Experience = () => {
 
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={submittResearch}
                       >
                         Add
@@ -973,41 +1014,43 @@ const Experience = () => {
             </div>
           </div>
         </section>
-        <div class="row justify-content-end">
-          <section id="clients" class="wow fadeInUp col-9">
-            <div class="container">
-              <div class="section-header" object="expText">
+        <div className="row justify-content-end">
+          <section id="clients" className="wow fadeInUp col-9">
+            <div className="container">
+              <div className="section-header" object="expText">
                 <h2>Experience Text</h2>
                 <form
                   name="sentMessage"
-                  class="well"
+                  className="well"
                   id="contactForm"
-                  novalidate
-                  action="/Admin/editClient/saveClientText"
-                  method="POST"
                   row="8"
                 >
                   <input type="hidden" name="Id" value="Id" />{" "}
                   <input type="hidden" field="type" />{" "}
                   <input type="hidden" field="page" />
-                  <div class="control-group">
-                    <div class="form-group">
+                  <div className="control-group">
+                    <div className="form-group">
                       <textarea
-                        class="form-control"
+                        className="form-control"
                         rows="8"
                         placeholder="About Clients"
                         id="name"
                         required
                         field="detailText"
-                        data-validation-required-message="Please enter your name"
+                        onChange={getexpDetails}
+                        value={expText}
                       ></textarea>
-                      {/* <span class="text-danger" if="#fields.hasErrors('Id')"
+                      {/* <span className="text-danger" if="#fields.hasErrors('Id')"
 									errors="detailText">Last Name Error </span> */}
                     </div>
                   </div>
-                  <div id="success"></div>
+                  <div id="success">{expTextErr}</div>
                   <br />
-                  <button type="submit" class="btn btn-primary pull-right">
+                  <button
+                    onClick={submitExpText}
+                    type="submit"
+                    className="btn btn-primary pull-right"
+                  >
                     Save
                   </button>
                   <br />

@@ -4,7 +4,7 @@ const Email = () => {
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Emails</span>
             <br />
@@ -14,9 +14,9 @@ const Email = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Dolores quae porro consequatur aliquam, incidunt fugiat culpa
@@ -25,12 +25,12 @@ const Email = () => {
               </p>
             </div>
 
-            <div class="row contact-info">
-              <div class="col-3" style={{ marginLeft: -20, width: 300 }}>
-                <div class="list-group" id="list-tab" role="tablist">
+            <div className="row contact-info">
+              <div className="col-3" style={{ marginLeft: -20, width: 300 }}>
+                <div className="list-group" id="list-tab" role="tablist">
                   <ul>
                     <div
-                      // class="list-group collapse"
+                      className="list-group collapse"
                       id="homeSubmenu"
                       role="tablist"
                     >
@@ -95,34 +95,34 @@ const Email = () => {
                   </ul>
                 </div>
               </div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
                     <form
                       name="sentMessage"
-                      class="well"
+                      className="well"
                       id="contactForm"
                       method="POST"
                       style={{ marginLeft: 100 }}
                     >
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Full Name"
                             id="name"
                             required
                             name="name"
                           />
-                          <p class="help-block"></p>
+                          <p className="help-block"></p>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="controls">
+                      <div className="form-group">
+                        <div className="controls">
                           <input
                             type="email"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Email"
                             id="email"
                             required
@@ -132,18 +132,21 @@ const Email = () => {
                         </div>
                       </div>
                       <div id="success"> </div>
-                      <button type="submit" class="btn btn-primary pull-right">
+                      <button
+                        type="submit"
+                        className="btn btn-primary pull-right"
+                      >
                         Add
                       </button>
                       <br />
                       <br />
                       <br />
 
-                      <div class="form-group">
-                        <div class="controls">
+                      <div className="form-group">
+                        <div className="controls">
                           <input
                             type="email"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Edit Email"
                             id="email"
                             name="email"
@@ -151,18 +154,21 @@ const Email = () => {
                         </div>
                       </div>
                       <div id="success"> </div>
-                      <button type="submit" class="btn btn-primary pull-right">
+                      <button
+                        type="submit"
+                        className="btn btn-primary pull-right"
+                      >
                         Save
                       </button>
                       <br />
                       <br />
                       <br />
 
-                      <div class="form-group">
-                        <div class="controls">
+                      <div className="form-group">
+                        <div className="controls">
                           <input
                             type="email"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Subject"
                             id="email"
                             required
@@ -170,12 +176,12 @@ const Email = () => {
                           />
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="controls">
+                      <div className="form-group">
+                        <div className="controls">
                           <textarea
                             rows="10"
                             cols="100"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Message"
                             id="message"
                             required
@@ -189,10 +195,16 @@ const Email = () => {
                         </div>
                       </div>
                       <div id="success"> </div>
-                      <button type="submit" class="btn btn-primary pull-right">
+                      <button
+                        type="submit"
+                        className="btn btn-primary pull-right"
+                      >
                         Send To All
                       </button>
-                      <button type="submit" class="btn btn-primary pull-left">
+                      <button
+                        type="submit"
+                        className="btn btn-primary pull-left"
+                      >
                         Send To Selected
                       </button>
                       <br />

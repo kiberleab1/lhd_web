@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
 const EditResearch = () => {
   const push = useNavigate();
-  var inputRef = useRef(null);
+
   const { id } = useParams();
   const [Rtypes, setRtype] = useState("");
   const [titles, setTitle] = useState("");
@@ -54,7 +54,7 @@ const EditResearch = () => {
     Axios.put(`http://localhost:1111/Admin/editResearch/${id}`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "research updated") {
+      if (response.data.msg === "research updated") {
         return push("/Admin/editExperiance");
       } else {
         setEerr(response.data);
@@ -63,18 +63,18 @@ const EditResearch = () => {
   };
   return (
     <div>
-      <div class="container">
-        <div class="section-header" object="clientText">
+      <div className="container">
+        <div className="section-header" object="clientText">
           <h2>Add or Edit Research</h2>
         </div>
-        <div class="form">
+        <div className="form">
           {/* <!-- Form itself --> */}
-          <form name="sentMessage" class="well" id="contactForm">
-            <div class="control-group">
-              <div class="form-group">
+          <form name="sentMessage" className="well" id="contactForm">
+            <div className="control-group">
+              <div className="form-group">
                 <select
                   name="Rtype"
-                  class="selectpicker form-control"
+                  className="selectpicker form-control"
                   onChange={getResearchType}
                   value={Rtypes}
                 >
@@ -89,11 +89,11 @@ const EditResearch = () => {
                 </select>
               </div>
             </div>
-            <div class="control-group">
-              <div class="form-group">
+            <div className="control-group">
+              <div className="form-group">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Title"
                   id="name"
                   required
@@ -103,11 +103,11 @@ const EditResearch = () => {
                 />
               </div>
             </div>
-            <div class="control-group">
-              <div class="form-group">
+            <div className="control-group">
+              <div className="form-group">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Client"
                   id="name"
                   required
@@ -117,11 +117,11 @@ const EditResearch = () => {
                 />
               </div>
             </div>
-            <div class="control-group">
-              <div class="form-group">
+            <div className="control-group">
+              <div className="form-group">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Methodlogy"
                   id="name"
                   required
@@ -131,11 +131,11 @@ const EditResearch = () => {
                 />
               </div>
             </div>
-            <div class="control-group">
-              <div class="form-group">
+            <div className="control-group">
+              <div className="form-group">
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Objective"
                   id="name"
                   required
@@ -151,7 +151,7 @@ const EditResearch = () => {
 
             <button
               type="submit"
-              class="btn btn-primary pull-right"
+              className="btn btn-primary pull-right"
               onClick={submittResearch}
             >
               Add

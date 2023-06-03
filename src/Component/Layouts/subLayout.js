@@ -13,7 +13,6 @@ function getUrl() {
 }
 let url = getUrl();
 const SubLayout = () => {
-  const push = useNavigate();
   const toKnowRole = useSelector((state) => state.userRole);
   const incomingRole = JSON.stringify(toKnowRole.todoReducer[0]);
   const adminRole = JSON.stringify({ text: "admin" });
@@ -21,34 +20,33 @@ const SubLayout = () => {
     localStorage.clear("persist:root");
     window.location.reload("/login");
   };
-  console.log(url);
-  console.log(adminRole);
-  console.log(incomingRole);
+
   if (url || adminRole !== incomingRole) {
     return (
       <div>
         <header id="header">
-          <nav class="navbar navbar-fixed-top" role="banner">
-            <div class="container">
-              <div class="navbar-header">
+          <nav className="navbar navbar-fixed-top" role="banner">
+            <div className="container">
+              <div className="navbar-header">
                 <button
                   type="button"
-                  class="navbar-toggle"
+                  className="navbar-toggle"
                   data-toggle="collapse"
                   data-target=".navbar-collapse"
                 >
-                  <span class="sr-only">Toggle navigation</span>{" "}
-                  <span class="icon-bar"></span> <span class="icon-bar"></span>{" "}
-                  <span class="icon-bar"></span>
+                  <span className="sr-only">Toggle navigation</span>{" "}
+                  <span className="icon-bar"></span>{" "}
+                  <span className="icon-bar"></span>{" "}
+                  <span className="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" thref="/Home">
+                <a className="navbar-brand" thref="/Home">
                   Le-monde
                 </a>
               </div>
 
-              <div class="collapse navbar-collapse navbar-right">
-                <ul class="nav navbar-nav">
-                  <li class="active">
+              <div className="collapse navbar-collapse navbar-right">
+                <ul className="nav navbar-nav">
+                  <li className="active">
                     <NavLink to="/lhd/Home">Home</NavLink>
                   </li>
                   <li>
@@ -80,11 +78,11 @@ const SubLayout = () => {
     return (
       <div>
         <header id="header">
-          <div class="container">
-            <div id="logo" class="pull-left">
+          <div className="container">
+            <div id="logo" className="pull-left">
               <h1>
-                <a to="/Admin/Home" class="scrollto">
-                  <i class="icon">
+                <a to="/Admin/Home" className="scrollto">
+                  <i className="icon">
                     <img width="50" src={Logo} />
                   </i>{" "}
                   Le Monde{" "}
@@ -93,7 +91,7 @@ const SubLayout = () => {
             </div>
 
             <nav id="nav-menu-container">
-              <ul class="nav-menu">
+              <ul className="nav-menu">
                 <li>
                   <NavLink to="/Admin/Home">Home</NavLink>
                 </li>
@@ -109,7 +107,7 @@ const SubLayout = () => {
                 <li>
                   <NavLink to="/Admin/editClient">Clients</NavLink>
                 </li>
-                <li class="menu-active menu-has-children">
+                <li className="menu-active menu-has-children">
                   <>More</>
                   <ul>
                     <li>

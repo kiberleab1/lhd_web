@@ -12,7 +12,7 @@ const EditAbout = () => {
 
   const [errors, setErr] = useState(false);
   const [missionErr, setMissionERR] = useState("");
-  const [Vision, setVision] = useState("Vision");
+
   const [Text, setText] = useState("");
   const [Obj, setObjs] = useState([]);
 
@@ -22,16 +22,15 @@ const EditAbout = () => {
     setMission(e.target.value);
   };
   //vision
-  const getVision = (e) => {
-    setVision("Vision");
-  };
+
   const getText = (e) => {
     setText(e.target.value);
   };
   const submitt = (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("type", Vision);
+    formData.append("type", "");
+    formData.append("page", "vision");
     formData.append("detailText", Text);
     Axios.post(
       "http://localhost:1111/Admin/editAbout/saveOthersText",
@@ -40,12 +39,9 @@ const EditAbout = () => {
         withCredentials: true,
       }
     ).then((response) => {
-      if (response.data === "OtherTexts POSTED") {
+      if (response.data.msg === "OtherTexts POSTED") {
         setErr(false);
         setText("");
-        //  sessionStorage.setItem("userId", response.data.id);
-        // dispatch(addRole(response.data.msg)); //redux
-        // return push("/Admin/editAbout");
       } else {
         setErr(response.data);
       }
@@ -54,7 +50,8 @@ const EditAbout = () => {
   const MissionSubmit = (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("type", "Mission");
+    formData.append("type", "");
+    formData.append("page", "mision");
     formData.append("detailText", mission);
     Axios.post(
       "http://localhost:1111/Admin/editAbout/saveOthersText",
@@ -63,7 +60,7 @@ const EditAbout = () => {
         withCredentials: true,
       }
     ).then((response) => {
-      if (response.data === "OtherTexts POSTED") {
+      if (response.data.msg === "OtherTexts POSTED") {
         setMissionERR(false);
         setMission("");
 
@@ -98,8 +95,6 @@ const EditAbout = () => {
   //OBJ
   const [obgErr, setobgErr] = useState("");
   const [Objective, setObj] = useState("");
-  const [type, setType] = useState("Objectives");
-
   const getDetails = (e) => {
     setObj(e.target.value);
   };
@@ -107,7 +102,8 @@ const EditAbout = () => {
   const Objsubmitt = (e) => {
     e.preventDefault();
     let formData = new FormData();
-    formData.append("type", type);
+    formData.append("type", "aboutPoint");
+    formData.append("page", "about");
     formData.append("detailText", Objective);
     Axios.post(
       "http://localhost:1111/Admin/editAbout/saveOthersText",
@@ -117,7 +113,7 @@ const EditAbout = () => {
       }
     ).then((response) => {
       console.log(response);
-      if (response.data === "OtherTexts POSTED") {
+      if (response.data.msg === "OtherTexts POSTED") {
         setobgErr(false);
         setObj("");
         // return window.location.reload();
@@ -184,7 +180,6 @@ const EditAbout = () => {
     Axios.post("http://localhost:1111/register_TeamMembers", formData, {
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
       if (response.data.msg === "NEW TEAM MEMBER ADD") {
         setTeamerr(false);
         setFname("");
@@ -287,10 +282,116 @@ const EditAbout = () => {
       setMiss(response.data);
     });
   }, []);
+  const [firm, setFirm] = useState("");
+  const [Firmerr, setFirmerr] = useState("");
+  const getfirmDetail = (e) => {
+    setFirm(e.target.value);
+  };
+  const submittFirm = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+
+    formData.append("detailText", firm);
+    formData.append("page", "firm");
+    formData.append("type", "");
+    Axios.post(
+      "http://localhost:1111/Admin/editAbout/saveOthersText",
+      formData,
+      {
+        withCredentials: true,
+      }
+    ).then((response) => {
+      console.log(response.data);
+      if (response.data.msg === "OtherTexts POSTED") {
+        setFirmerr(false);
+        setFirm("");
+      } else {
+        setFirmerr(response.data);
+      }
+    });
+  };
+  const [teamText, setteamText] = useState("");
+  const [errTeamTxt, setTeamtxtErr] = useState("");
+  const getTeamText = (e) => {
+    setteamText(e.target.value);
+  };
+  const submitTeamText = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("detailText", teamText);
+    formData.append("page", "teamText");
+    formData.append("type", "");
+    Axios.post(
+      "http://localhost:1111/Admin/editAbout/saveOthersText",
+      formData,
+      {
+        withCredentials: true,
+      }
+    ).then((response) => {
+      if (response.data.msg === "OtherTexts POSTED") {
+        setTeamtxtErr(false);
+        setteamText("");
+      } else {
+        setTeamtxtErr(response.data);
+      }
+    });
+  };
+  const [OpText, setOpText] = useState("");
+  const [opErr, setopErr] = useState("");
+  const getOpText = (e) => {
+    setOpText(e.target.value);
+  };
+  const submittOperation = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("detailText", OpText);
+    formData.append("page", "operational");
+    formData.append("type", "");
+    Axios.post(
+      "http://localhost:1111/Admin/editAbout/saveOthersText",
+      formData,
+      {
+        withCredentials: true,
+      }
+    ).then((response) => {
+      if (response.data.msg === "OtherTexts POSTED") {
+        setopErr(false);
+        setOpText("");
+      } else {
+        setopErr(response.data);
+      }
+    });
+  };
+  const [Testmony, setTestmony] = useState("");
+  const [testErr, settestErr] = useState("");
+  const getTestmony = (e) => {
+    setTestmony(e.target.value);
+  };
+  const submitTestimonial = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("detailText", Testmony);
+    formData.append("page", "Testimonial");
+    formData.append("type", "");
+    Axios.post(
+      "http://localhost:1111/Admin/editAbout/saveOthersText",
+      formData,
+      {
+        withCredentials: true,
+      }
+    ).then((response) => {
+      if (response.data.msg === "OtherTexts POSTED") {
+        settestErr(false);
+        setTestmony("");
+      } else {
+        settestErr(response.data);
+      }
+    });
+  };
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Add or Edit About Us</span>
             <br />
@@ -300,29 +401,34 @@ const EditAbout = () => {
         </div>
       </section>
       <main id="main">
-        <section id="about" class="wow fadeInUp">
-          <div class="container">
-            <div class="row">
-              <div class="container">
-                <div class="section-header" text="FirmText">
+        <section id="about" className="wow fadeInUp">
+          <div className="container">
+            <div className="row">
+              <div className="container">
+                <div className="section-header" text="FirmText">
                   <h2>Our Firm</h2>
-                  <form name="sentMessage" class="well" id="contactForm">
-                    <div class="control-group">
-                      <div class="form-group">
+                  <form name="sentMessage" className="well" id="contactForm">
+                    <div className="control-group">
+                      <div className="form-group">
                         <textarea
-                          class="form-control"
+                          className="form-control"
                           rows="8"
-                          placeholder="Operational Capacity not working"
+                          placeholder="Operational Capacity"
                           id="name"
                           required
                           name="detailText"
+                          onChange={getfirmDetail}
+                          value={firm}
                         ></textarea>
                       </div>
                     </div>
-                    <div id="success"></div>
+                    <div id="success">{Firmerr}</div>
                     <br />
-
-                    <button type="submit" class="btn btn-primary pull-right">
+                    <button
+                      onClick={submittFirm}
+                      type="submit"
+                      className="btn btn-primary pull-right"
+                    >
                       Save
                     </button>
                     <br />
@@ -332,16 +438,16 @@ const EditAbout = () => {
             </div>
           </div>
         </section>
-        <section id="about" class="wow fadeInUp">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6 about-img">
+        <section id="about" className="wow fadeInUp">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-6 about-img">
                 <img src="/img/about.svg" alt="" />
               </div>
 
-              <div class="col-lg-6 content">
-                <div class="container">
-                  <div class="section-header" text="VisionText">
+              <div className="col-lg-6 content">
+                <div className="container">
+                  <div className="section-header" text="VisionText">
                     <h2>Vision</h2>
 
                     {viss.length > 0 ? (
@@ -349,7 +455,7 @@ const EditAbout = () => {
                         <ul>
                           <li text="Objectives">
                             <i
-                              class="icon ion-ios-checkmark-outline"
+                              className="icon ion-ios-checkmark-outline"
                               key={val.id}
                             >
                               {val.detailText}
@@ -357,7 +463,7 @@ const EditAbout = () => {
                             <button
                               onClick={() => Delete(val.id)}
                               type="submit"
-                              class="btn btn-primary "
+                              className="btn btn-primary "
                             >
                               Delete
                             </button>
@@ -370,20 +476,14 @@ const EditAbout = () => {
                     )}
                     <form
                       name="sentMessage"
-                      class="well"
+                      className="well"
                       id="contactForm"
                       row="8"
                     >
-                      <input
-                        type="hidden"
-                        value="Vision"
-                        name="type"
-                        onChange={getVision}
-                      />{" "}
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Operational Capacity"
                             id="name"
@@ -393,14 +493,14 @@ const EditAbout = () => {
                             onChange={getText}
                             value={Text}
                           ></textarea>
-                          <span class="text-danger">{errors}</span>
+                          <span className="text-danger">{errors}</span>
                         </div>
                       </div>
                       <div id="success"></div>
                       <br />
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={submitt}
                       >
                         Save
@@ -408,8 +508,8 @@ const EditAbout = () => {
                       <br />
                     </form>
                   </div>
-                  <div class="container">
-                    <div class="section-header">
+                  <div className="container">
+                    <div className="section-header">
                       <h2>Mission</h2>
                       {/* mapping */}
                       {miss.length > 0 ? (
@@ -417,7 +517,7 @@ const EditAbout = () => {
                           <ul>
                             <li text="Objectives">
                               <i
-                                class="icon ion-ios-checkmark-outline"
+                                className="icon ion-ios-checkmark-outline"
                                 key={val.id}
                               >
                                 {val.detailText}
@@ -425,7 +525,7 @@ const EditAbout = () => {
                               <button
                                 onClick={() => Delete(val.id)}
                                 type="submit"
-                                class="btn btn-primary "
+                                className="btn btn-primary "
                               >
                                 Delete
                               </button>
@@ -438,16 +538,14 @@ const EditAbout = () => {
                       )}
                       <form
                         name="sentMessage"
-                        class="well"
+                        className="well"
                         id="contactForm"
                         row="8"
                       >
-                        {" "}
-                        <input type="hidden" name="mission" value="Mission" />
-                        <div class="control-group">
-                          <div class="form-group">
+                        <div className="control-group">
+                          <div className="form-group">
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               rows="8"
                               placeholder="Operational Capacity"
                               id="name"
@@ -457,14 +555,14 @@ const EditAbout = () => {
                               onChange={getMission}
                               value={mission}
                             ></textarea>
-                            <span class="text-danger">{missionErr} </span>
+                            <span className="text-danger">{missionErr} </span>
                           </div>
                         </div>
                         <div id="success"></div>
                         <br />
                         <button
                           type="submit"
-                          class="btn btn-primary pull-right"
+                          className="btn btn-primary pull-right"
                           onClick={MissionSubmit}
                         >
                           Save
@@ -473,7 +571,7 @@ const EditAbout = () => {
                       </form>
                     </div>
 
-                    <div class="section-header">
+                    <div className="section-header">
                       <h2>Objectives</h2>
                     </div>
                     {Obj.length > 0 ? (
@@ -481,7 +579,7 @@ const EditAbout = () => {
                         <ul>
                           <li text="Objectives">
                             <i
-                              class="icon ion-ios-checkmark-outline"
+                              className="icon ion-ios-checkmark-outline"
                               key={val.id}
                             >
                               {val.detailText}
@@ -489,7 +587,7 @@ const EditAbout = () => {
                             <button
                               onClick={() => Delete(val.id)}
                               type="submit"
-                              class="btn btn-primary "
+                              className="btn btn-primary "
                             >
                               Delete
                             </button>
@@ -502,10 +600,10 @@ const EditAbout = () => {
                     )}
 
                     <form method="POST" name="sentMessage">
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Objectives"
                             id="name"
@@ -515,12 +613,12 @@ const EditAbout = () => {
                             data-validation-required-message="Please enter your name"
                             value={Objective}
                           ></textarea>
-                          <span class="text-danger">{obgErr} </span>
+                          <span className="text-danger">{obgErr} </span>
                         </div>
                       </div>
                       <button
                         type="submit"
-                        class="btn btn-primary "
+                        className="btn btn-primary "
                         onClick={Objsubmitt}
                       >
                         Add
@@ -533,36 +631,41 @@ const EditAbout = () => {
             </div>
           </div>
         </section>
-        <section id="about" class="wow fadeInUp">
-          <div class="container">
-            <div class="row">
-              <div class="container">
-                <div class="section-header">
+        <section id="about" className="wow fadeInUp">
+          <div className="container">
+            <div className="row">
+              <div className="container">
+                <div className="section-header">
                   <h2>Our Team</h2>
                   <form
                     name="sentMessage"
-                    class="well"
+                    className="well"
                     id="contactForm"
                     row="8"
                   >
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <textarea
-                          class="form-control"
+                          className="form-control"
                           rows="8"
-                          placeholder="NOT CHEKED"
-                          // Operational Capacity
+                          placeholder="Operational Capacity"
                           id="name"
                           required
                           name="detailText"
                           data-validation-required-message="Please enter your name"
+                          onChange={getTeamText}
+                          value={teamText}
                         ></textarea>
                       </div>
                     </div>
-                    <div id="success"></div>
+                    <div id="success">{errTeamTxt}</div>
                     <br />
 
-                    <button type="submit" class="btn btn-primary pull-right">
+                    <button
+                      type="submit"
+                      className="btn btn-primary pull-right"
+                      onClick={submitTeamText}
+                    >
                       Save
                     </button>
                     <br />
@@ -572,18 +675,18 @@ const EditAbout = () => {
             </div>
           </div>
         </section>
-        <section id="team" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header">
+        <section id="team" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header">
               <h2>Our Team</h2>
             </div>
             {team.length > 0 ? (
               team.map((val, index) => (
-                <div class="row">
-                  <div class="col-lg-3 col-md-6" text="teamMember">
-                    <div class="member">
+                <div className="row">
+                  <div className="col-lg-3 col-md-6" text="teamMember">
+                    <div className="member">
                       <>
-                        <div class="pic">
+                        <div className="pic">
                           {/* {require(`../../../../../server/uploads/${val.imgPath}`)} */}
                           <img
                             src={require(`../../../../../server/uploads/${val.imgPath}`)}
@@ -591,14 +694,14 @@ const EditAbout = () => {
                           />
                         </div>
 
-                        <div class="details" key={val.id}>
+                        <div className="details" key={val.id}>
                           <h4>
                             {val.fristName} {val.lastName}{" "}
                           </h4>
                           <span> {val.authority}</span>
                           <span> {val.qualification} </span>
 
-                          <div class="social">
+                          <div className="social">
                             <a href={val.twiter}>
                               <AiFillTwitterCircle />
                             </a>{" "}
@@ -617,14 +720,14 @@ const EditAbout = () => {
                     </div>
                     <button
                       type="submit"
-                      class="btn btn-primary "
+                      className="btn btn-primary "
                       onClick={() => DeleteTeam(val.id)}
                     >
                       Delete
                     </button>
                     <br /> <br />
                     <Link to={`/Admin/select/one/${val.id}`}>
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" className="btn btn-primary">
                         Edit
                       </button>
                     </Link>
@@ -632,23 +735,23 @@ const EditAbout = () => {
                 </div>
               ))
             ) : (
-              <p class="container">Insert team member</p>
+              <p className="container">Insert team member</p>
             )}
           </div>
         </section>
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
-                    <form class="well" id="contactForm">
-                      <div class="control-group">
-                        <div class="form-group">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
+                    <form className="well" id="contactForm">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Frist Name"
                             id="name"
                             required
@@ -658,11 +761,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Last Name"
                             id="name"
                             required
@@ -672,11 +775,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Authority"
                             id="name"
                             required
@@ -686,11 +789,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Qualification"
                             id="name"
                             required
@@ -701,11 +804,11 @@ const EditAbout = () => {
                         </div>
                       </div>
 
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Link to facebook  Account"
                             id="name"
                             required
@@ -715,11 +818,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Link to tewiter  Account"
                             id="name"
                             required
@@ -729,11 +832,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Link to Google+  Account"
                             id="name"
                             required
@@ -743,11 +846,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Link to LinkdIn  Account"
                             id="name"
                             required
@@ -757,13 +860,13 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="file"
                             // Accept="image/*"
                             name="img"
-                            class="form-control"
+                            className="form-control"
                             id="img"
                             // value={Img}
                             ref={inputRef}
@@ -778,7 +881,7 @@ const EditAbout = () => {
 
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={submittTeam}
                       >
                         Add
@@ -792,28 +895,33 @@ const EditAbout = () => {
           </div>
         </section>
         {/* #team */}
-        <section id="about" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header" text="OperationalCapacity">
+        <section id="about" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header" text="OperationalCapacity">
               <h2>Operational Capacity</h2>
-              <form name="sentMessage" class="well" id="contactForm">
-                <div class="control-group">
-                  <div class="form-group">
+              <form name="sentMessage" className="well" id="contactForm">
+                <div className="control-group">
+                  <div className="form-group">
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       rows="8"
-                      placeholder="Operational Capacity not working"
+                      placeholder="Operational Capacity"
                       id="name"
                       required
                       name="detailText"
-                      data-validation-required-message="Please enter your name"
+                      onChange={getOpText}
+                      value={OpText}
                     ></textarea>
                   </div>
                 </div>
-                <div id="success"></div>
+                <div id="success">{opErr}</div>
                 <br />
 
-                <button type="submit" class="btn btn-primary pull-right">
+                <button
+                  onClick={submittOperation}
+                  type="submit"
+                  className="btn btn-primary pull-right"
+                >
                   Save
                 </button>
                 <br />
@@ -822,27 +930,33 @@ const EditAbout = () => {
           </div>
         </section>
         {/* Testimonials Section */}
-        <section id="testimonials" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header" text="Testimonial">
+        <section id="testimonials" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header" text="Testimonial">
               <h2>Testimonials Text</h2>
-              <form name="sentMessage" class="well" id="contactForm">
-                <div class="control-group">
-                  <div class="form-group">
+              <form name="sentMessage" className="well" id="contactForm">
+                <div className="control-group">
+                  <div className="form-group">
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       rows="8"
                       placeholder="About Clients"
                       id="name"
                       required
                       name="detailText"
+                      onChange={getTestmony}
+                      value={Testmony}
                     ></textarea>
                   </div>
                 </div>
-                <div id="success"></div>
+                <div id="success">{testErr}</div>
                 <br />
 
-                <button type="submit" class="btn btn-primary pull-right">
+                <button
+                  onClick={submitTestimonial}
+                  type="submit"
+                  className="btn btn-primary pull-right"
+                >
                   Save
                 </button>
                 <br />
@@ -850,10 +964,10 @@ const EditAbout = () => {
             </div>
           </div>
 
-          <div class="owl-carousel testimonials-carousel">
+          <div className="owl-carousel testimonials-carousel">
             {Testimoies.length > 0 ? (
               Testimoies.map((val, index) => (
-                <div class="testimonial-item" text="testomony Testimonies">
+                <div className="testimonial-item" text="testomony Testimonies">
                   <p text="testomony.detailText" key={val.id}>
                     {val.detailTexts}
                   </p>
@@ -870,7 +984,7 @@ const EditAbout = () => {
                   />
                   <button
                     type="submit"
-                    class="btn btn-primary "
+                    className="btn btn-primary "
                     onClick={() => DeleteTestimonies(val.id)}
                   >
                     Delete
@@ -882,38 +996,38 @@ const EditAbout = () => {
                     value="testomony.Id"
                   />
                   <Link to={`/one/testmonial/${val.id}`}>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" className="btn btn-primary">
                       Edit
                     </button>
                   </Link>
                 </div>
               ))
             ) : (
-              <p className="container">Insert testomony</p>
+              <p classNameName="container">Insert testomony</p>
             )}
           </div>
         </section>
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="section-header" text="clientText">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="section-header" text="clientText">
                     <h2>Add or Edit Testimony</h2>
                   </div>
-                  <div class="form">
+                  <div className="form">
                     <form
                       name="sentMessage"
-                      class="well"
+                      className="well"
                       id="contactForm"
                       method="POST"
                     >
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Frist Name"
                             id="name"
                             required
@@ -924,11 +1038,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Last Name"
                             id="name"
                             required
@@ -939,11 +1053,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Authority"
                             id="name"
                             required
@@ -954,11 +1068,11 @@ const EditAbout = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Organization"
                             id="name"
                             required
@@ -969,10 +1083,10 @@ const EditAbout = () => {
                           />{" "}
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Testimonial Text"
                             id="name"
@@ -990,7 +1104,7 @@ const EditAbout = () => {
 
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={SubmittTestimony}
                       >
                         Add

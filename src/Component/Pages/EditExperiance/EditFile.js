@@ -40,7 +40,7 @@ const EditExpFile = () => {
     Axios.put(`http://localhost:1111/Admin/ExperianceID/edit/${id}`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "experince updated") {
+      if (response.data.msg === "experince updated") {
         setErr(false);
         return push("/Admin/editExperiance");
       } else {
@@ -51,21 +51,21 @@ const EditExpFile = () => {
 
   return (
     <div>
-      <div class="row contact-info">
-        <div class="col-lg-5"></div>
-        <div class="col-lg-7">
-          <div class="container">
-            <div class="section-header" object="clientText">
+      <div className="row contact-info">
+        <div className="col-lg-5"></div>
+        <div className="col-lg-7">
+          <div className="container">
+            <div className="section-header" object="clientText">
               <h2>Add or Edit Experiance</h2>
             </div>
-            <div class="form">
+            <div className="form">
               {/* <!-- Form itself --> */}
-              <form class="well" id="contactForm" method="POST">
-                <div class="control-group">
-                  <div class="form-group">
+              <form className="well" id="contactForm" method="POST">
+                <div className="control-group">
+                  <div className="form-group">
                     <select
                       name="type"
-                      class="selectpicker form-control"
+                      className="selectpicker form-control"
                       onChange={getType}
                       value={type}
                     >
@@ -78,11 +78,11 @@ const EditExpFile = () => {
                     </select>
                   </div>
                 </div>
-                <div class="control-group">
-                  <div class="form-group">
+                <div className="control-group">
+                  <div className="form-group">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder="Experiance Detail"
                       id="name"
                       required
@@ -92,11 +92,11 @@ const EditExpFile = () => {
                     />
                   </div>
                 </div>
-                <div class="control-group">
-                  <div class="form-group">
+                <div className="control-group">
+                  <div className="form-group">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       placeholder="Client"
                       id="name"
                       required
@@ -106,11 +106,11 @@ const EditExpFile = () => {
                     />
                   </div>
                 </div>
-                <div class="control-group">
-                  <div class="form-group">
+                <div className="control-group">
+                  <div className="form-group">
                     <input
                       type="hidden"
-                      class="form-control"
+                      className="form-control"
                       id="name"
                       required
                       field="firm"
@@ -125,7 +125,7 @@ const EditExpFile = () => {
 
                 <button
                   type="submit"
-                  class="btn btn-primary pull-right"
+                  className="btn btn-primary pull-right"
                   onClick={submittExperince}
                 >
                   Add

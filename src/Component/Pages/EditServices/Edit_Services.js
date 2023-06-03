@@ -27,7 +27,7 @@ const Edit_Services = () => {
     Axios.post("http://localhost:1111/lhd/Service", formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Service POSTED") {
+      if (response.data.msg === "Service POSTED") {
         setErr(false);
         setServiceName("");
         setDetailText("");
@@ -42,7 +42,7 @@ const Edit_Services = () => {
     Axios.delete(`http://localhost:1111/Admin/deleteService/${val}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "deleted service") {
+      if (response.data.msg === "deleted service") {
         //my-adv/128
         window.location.reload();
       }
@@ -52,15 +52,39 @@ const Edit_Services = () => {
     Axios.get(`http://localhost:1111/all/service`, {
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
       setAllService(response.data);
     });
   }, []);
-
+  const [service, setservice] = useState("");
+  const [serErr, setserErr] = useState("");
+  const getService = (e) => {
+    setservice(e.target.value);
+  };
+  const submitservice = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("detailText", service);
+    formData.append("page", "Service");
+    formData.append("type", "");
+    Axios.post(
+      "http://localhost:1111/Admin/editAbout/saveOthersText",
+      formData,
+      {
+        withCredentials: true,
+      }
+    ).then((response) => {
+      if (response.data.msg === "OtherTexts POSTED") {
+        setserErr(false);
+        setservice("");
+      } else {
+        setserErr(response.data);
+      }
+    });
+  };
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Add Or Edit Services</span> <br />
             Striving for Excellence and Lasting Change!
@@ -70,28 +94,34 @@ const Edit_Services = () => {
       </section>
       <main id="main">
         <section id="services">
-          <div class="container">
-            <div class="row">
-              <div class="container">
-                <div class="section-header">
+          <div className="container">
+            <div className="row">
+              <div className="container">
+                <div className="section-header">
                   <h2>Our Service</h2>
-                  <form class="well" id="contactForm" row="8">
-                    <div class="control-group">
-                      <div class="form-group">
+                  <form className="well" id="contactForm" row="8">
+                    <div className="control-group">
+                      <div className="form-group">
                         <textarea
-                          class="form-control"
+                          className="form-control"
                           rows="8"
                           placeholder="Operational Capacity"
                           id="name"
                           required
                           name="detailText"
+                          onChange={getService}
+                          value={service}
                         ></textarea>
                       </div>
                     </div>
-                    <div id="success"></div>
+                    <div id="success">{serErr}</div>
                     <br />
                     {/* <!-- For success/fail messages --> */}
-                    <button type="submit" class="btn btn-primary pull-right">
+                    <button
+                      type="submit"
+                      onClick={submitservice}
+                      className="btn btn-primary pull-right"
+                    >
                       Save
                     </button>
                     <br />
@@ -100,24 +130,24 @@ const Edit_Services = () => {
               </div>
             </div>
 
-            <div class="row">
+            <div className="row">
               {all.length > 0 ? (
                 all.map((val, index) => (
                   <div
-                    class="col-lg-4"
+                    className="col-lg-4"
                     // <!-- th:each="service :${services}" -->
                   >
-                    <div class="box wow fadeInLeft">
-                      <div class="icon">
+                    <div className="box wow fadeInLeft">
+                      <div className="icon">
                         <BsBriefcase />
                       </div>
-                      <h4 class="title">
+                      <h4 className="title">
                         <Link to="/lhd/services/+''+service.serviceName">
                           {val.serviceName}
                         </Link>
                       </h4>
 
-                      <div class="description">{val.detailText}</div>
+                      <div className="description">{val.detailText}</div>
                       <div></div>
                     </div>
 
@@ -129,7 +159,7 @@ const Edit_Services = () => {
                       />
                       <button
                         type="submit"
-                        class="btn btn-primary "
+                        className="btn btn-primary "
                         onClick={() => DeleteService(val.id)}
                       >
                         Delete
@@ -140,7 +170,7 @@ const Edit_Services = () => {
 
                       <Link to={`/edit/service/${val.id}`}>
                         {" "}
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" className="btn btn-primary">
                           Edit
                         </button>
                       </Link>
@@ -150,27 +180,27 @@ const Edit_Services = () => {
                   </div>
                 ))
               ) : (
-                <>Insert Service</>
+                <>Insert New Service</>
               )}
             </div>
           </div>
         </section>
 
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
                     {/* <!-- Form itself --> */}
-                    <form class="well" id="contactForm">
-                      <div class="control-group">
-                        <div class="form-group">
+                    <form className="well" id="contactForm">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="file"
                             name="img"
-                            class="form-control"
+                            className="form-control"
                             placeholder="logo"
                             id="img"
                             onChange={getimg}
@@ -179,11 +209,11 @@ const Edit_Services = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Service Name"
                             id="name"
                             required
@@ -193,10 +223,10 @@ const Edit_Services = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Detail Service"
                             id="name"
@@ -213,7 +243,7 @@ const Edit_Services = () => {
 
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={submittService}
                       >
                         Add

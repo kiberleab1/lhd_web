@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
 const EditService = () => {
   const push = useNavigate();
   const { id } = useParams();
   const inputRef = useRef(null);
-  const [all, setAllService] = useState([]);
+  // const [all, setAllService] = useState([]);
   const [serviceName, setServiceName] = useState("");
   const [detailText, setDetailText] = useState("");
   const [img, setImg] = useState("");
@@ -34,7 +34,7 @@ const EditService = () => {
     Axios.put(`http://localhost:1111/Admin/editService/${id}`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Service Updated") {
+      if (response.data.msg === "Service Updated") {
         setErr(false);
         setServiceName("");
         setDetailText("");
@@ -56,25 +56,25 @@ const EditService = () => {
       setDetailText(response.data.detailText);
       setImg(response.data.svgImgPath);
     });
-  }, []);
+  }, [id]);
 
   return (
     <div>
-      <section id="contact" class="wow fadeInUp">
-        <div class="container">
-          <div class="row contact-info">
-            <div class="col-lg-5"></div>
-            <div class="col-lg-7">
-              <div class="container">
-                <div class="form">
+      <section id="contact" className="wow fadeInUp">
+        <div className="container">
+          <div className="row contact-info">
+            <div className="col-lg-5"></div>
+            <div className="col-lg-7">
+              <div className="container">
+                <div className="form">
                   {/* <!-- Form itself --> */}
-                  <form class="well" id="contactForm">
-                    <div class="control-group">
-                      <div class="form-group">
+                  <form className="well" id="contactForm">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="file"
                           name="img"
-                          class="form-control"
+                          className="form-control"
                           placeholder="logo"
                           id="img"
                           onChange={getimg}
@@ -83,11 +83,11 @@ const EditService = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Service Name"
                           id="name"
                           required
@@ -97,10 +97,10 @@ const EditService = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <textarea
-                          class="form-control"
+                          className="form-control"
                           rows="8"
                           placeholder="Detail Service"
                           id="name"
@@ -117,7 +117,7 @@ const EditService = () => {
 
                     <button
                       type="submit"
-                      class="btn btn-primary pull-right"
+                      className="btn btn-primary pull-right"
                       onClick={submittService}
                     >
                       Add
