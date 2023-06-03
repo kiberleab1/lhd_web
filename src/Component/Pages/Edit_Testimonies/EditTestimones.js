@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
 const EditTestimones = () => {
@@ -11,7 +11,7 @@ const EditTestimones = () => {
   const [Organazations, setOrganazations] = useState("");
   const [detailTexts, setdetailTexts] = useState("");
   const [testimonyErr, setTestmonyerr] = useState("");
-  const [Testimoies, setTestimoies] = useState([]);
+  // const [Testimoies, setTestimoies] = useState([]);
   const getFirstName = (e) => {
     setfnames(e.target.value);
   };
@@ -60,7 +60,7 @@ const EditTestimones = () => {
         withCredentials: true,
       }
     ).then((response) => {
-      if (response.data.msg == "Testimonies updated") {
+      if (response.data.msg === "Testimonies updated") {
         setTestmonyerr(false);
         setfnames("");
         setlnames("");
@@ -75,27 +75,27 @@ const EditTestimones = () => {
   };
   return (
     <div>
-      <section id="contact" class="wow fadeInUp">
-        <div class="container">
-          <div class="row contact-info">
-            <div class="col-lg-5"></div>
-            <div class="col-lg-7">
-              <div class="container">
-                <div class="section-header" text="clientText">
+      <section id="contact" className="wow fadeInUp">
+        <div className="container">
+          <div className="row contact-info">
+            <div className="col-lg-5"></div>
+            <div className="col-lg-7">
+              <div className="container">
+                <div className="section-header" text="clientText">
                   <h2>Add or Edit Testimony</h2>
                 </div>
-                <div class="form">
+                <div className="form">
                   <form
                     name="sentMessage"
-                    class="well"
+                    className="well"
                     id="contactForm"
                     method="POST"
                   >
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Frist Name"
                           id="name"
                           required
@@ -106,11 +106,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Last Name"
                           id="name"
                           required
@@ -121,11 +121,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Authority"
                           id="name"
                           required
@@ -136,11 +136,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Organization"
                           id="name"
                           required
@@ -151,10 +151,10 @@ const EditTestimones = () => {
                         />{" "}
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <textarea
-                          class="form-control"
+                          className="form-control"
                           rows="8"
                           placeholder="Testimonial Text"
                           id="name"
@@ -172,7 +172,7 @@ const EditTestimones = () => {
 
                     <button
                       type="submit"
-                      class="btn btn-primary pull-right"
+                      className="btn btn-primary pull-right"
                       onClick={SubmittTestimony}
                     >
                       Add

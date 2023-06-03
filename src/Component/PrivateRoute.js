@@ -6,7 +6,7 @@ const PrivateRoutes = () => {
   const toKnowRole = useSelector((state) => state.userRole);
   const incomingRole = JSON.stringify(toKnowRole.todoReducer[0]);
   const adminRole = JSON.stringify({ text: "admin" });
-  if (incomingRole == adminRole) {
+  if (incomingRole === adminRole) {
     auth = { token: true };
   } else {
     auth = { token: false };

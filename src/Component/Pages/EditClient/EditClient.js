@@ -40,7 +40,7 @@ const EditClient = () => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-      if (response.data.msg == "POSTED") {
+      if (response.data.msg === "POSTED") {
         setErr(false);
         setName("");
         setCountry("");
@@ -93,16 +93,44 @@ const EditClient = () => {
     Axios.delete(`http://localhost:1111/Admin/editClient/delete/${vall}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Client DELETED") {
+      if (response.data.msg === "Client DELETED") {
         //my-adv/128
         window.location.reload();
+      }
+    });
+  };
+  const [clintErr, setclintErr] = useState("");
+  const [clintText, setclintText] = useState("");
+  const getClintText = (e) => {
+    setclintText(e.target.value);
+  };
+  const submitClientTxt = (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+
+    formData.append("detailText", clintText);
+    formData.append("page", "clients");
+    formData.append("type", "");
+    Axios.post(
+      "http://localhost:1111/Admin/editAbout/saveOthersText",
+      formData,
+      {
+        withCredentials: true,
+      }
+    ).then((response) => {
+      console.log(response.data);
+      if (response.data.msg === "OtherTexts POSTED") {
+        setclintErr(false);
+        setclintText("");
+      } else {
+        setclintErr(response.data);
       }
     });
   };
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Add or Edit Clients </span>
             <br />
@@ -112,12 +140,12 @@ const EditClient = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
-          <div class="row">
-            <div class="col-3">
-              <div class="list-group" id="list-tab" role="tablist">
+        <section id="contact" className="wow fadeInUp">
+          <div className="row">
+            <div className="col-3">
+              <div className="list-group" id="list-tab" role="tablist">
                 <a
-                  class="list-group-item list-group-item-action active"
+                  className="list-group-item list-group-item-action active"
                   id="list-home-list"
                   data-toggle="list"
                   href="#list-home"
@@ -127,7 +155,7 @@ const EditClient = () => {
                   UN Agencies
                 </a>{" "}
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-profile-list"
                   data-toggle="list"
                   href="#list-profile"
@@ -137,7 +165,7 @@ const EditClient = () => {
                   Govermental Organizations{" "}
                 </a>
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-messages-list"
                   data-toggle="list"
                   href="#list-messages"
@@ -148,15 +176,15 @@ const EditClient = () => {
                 </a>
               </div>
             </div>
-            <div class="col-8">
-              <div class="tab-content" id="nav-tabContent">
+            <div className="col-8">
+              <div className="tab-content" id="nav-tabContent">
                 <div
-                  // class="tab-pane fade show active"
+                  // className="tab-pane fade show active"
                   id="list-home"
                   role="tabpanel"
                   aria-labelledby="list-home-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -174,7 +202,7 @@ const EditClient = () => {
                             <td>
                               <button
                                 type="submit"
-                                class="btn btn-primary "
+                                className="btn btn-primary "
                                 onClick={() => DeleteClients(val.id)}
                               >
                                 Delete
@@ -184,7 +212,10 @@ const EditClient = () => {
                             <td>
                               <Link to={`/edit/clints/${val.id}`}>
                                 {" "}
-                                <button type="submit" class="btn btn-primary">
+                                <button
+                                  type="submit"
+                                  className="btn btn-primary"
+                                >
                                   Edit
                                 </button>
                               </Link>
@@ -194,18 +225,18 @@ const EditClient = () => {
                           </tr>
                         ))
                       ) : (
-                        <h4>No gov clients</h4>
+                        <h4>Insert Non-gov clients</h4>
                       )}
                     </tbody>
                   </table>
                 </div>
                 <div
-                  // class="tab-pane fade"
+                  // className="tab-pane fade"
                   id="list-profile"
                   role="tabpanel"
                   aria-labelledby="list-profile-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -226,7 +257,7 @@ const EditClient = () => {
                             <td>
                               <button
                                 type="submit"
-                                class="btn btn-primary "
+                                className="btn btn-primary "
                                 onClick={() => DeleteClients(val.id)}
                               >
                                 Delete
@@ -236,7 +267,10 @@ const EditClient = () => {
                             <td>
                               <Link to={`/edit/clints/${val.id}`}>
                                 {" "}
-                                <button type="submit" class="btn btn-primary">
+                                <button
+                                  type="submit"
+                                  className="btn btn-primary"
+                                >
                                   Edit
                                 </button>
                               </Link>
@@ -245,19 +279,19 @@ const EditClient = () => {
                           </tr>
                         ))
                       ) : (
-                        <h4>No gov clients</h4>
+                        <h4>Insert gov clients</h4>
                       )}
                     </tbody>
                   </table>
                 </div>
                 <div
-                  // class="tab-pane fade"
+                  // className="tab-pane fade"
                   id="list-messages"
                   role="tabpanel"
                   aria-labelledby="list-messages-list"
                 >
                   <div>
-                    <table class="table table-striped">
+                    <table className="table table-striped">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -275,7 +309,7 @@ const EditClient = () => {
                               <td>
                                 <button
                                   type="submit"
-                                  class="btn btn-primary "
+                                  className="btn btn-primary "
                                   onClick={() => DeleteClients(val.id)}
                                 >
                                   Delete
@@ -285,7 +319,10 @@ const EditClient = () => {
                               <td>
                                 <Link to={`/edit/clints/${val.id}`}>
                                   {" "}
-                                  <button type="submit" class="btn btn-primary">
+                                  <button
+                                    type="submit"
+                                    className="btn btn-primary"
+                                  >
                                     Edit
                                   </button>
                                 </Link>
@@ -294,7 +331,7 @@ const EditClient = () => {
                             </tr>
                           ))
                         ) : (
-                          <h4>No UN clients</h4>
+                          <h4>Insert UN clients</h4>
                         )}
                       </tbody>
                     </table>
@@ -304,19 +341,19 @@ const EditClient = () => {
             </div>
           </div>
         </section>
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
-                    <form name="sentMessage" class="well" id="contactForm">
-                      <div class="control-group">
-                        <div class="form-group">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
+                    <form name="sentMessage" className="well" id="contactForm">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Organization Name"
                             id="name"
                             required
@@ -326,11 +363,11 @@ const EditClient = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             name="country"
-                            class="form-control selectpicker countrypicker"
+                            className="form-control selectpicker countrypicker"
                             placeholder="Country name"
                             data-default="Ethiopia"
                             data-flag="true"
@@ -339,11 +376,11 @@ const EditClient = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <select
                             name="type"
-                            class="selectpicker form-control"
+                            className="selectpicker form-control"
                             onChange={getType}
                             value={type}
                           >
@@ -357,11 +394,11 @@ const EditClient = () => {
                           </select>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="link to Organazation"
                             id="name"
                             required
@@ -371,12 +408,12 @@ const EditClient = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="file"
                             name="img"
-                            class="form-control"
+                            className="form-control"
                             placeholder="logo"
                             // value="Logo"
                             id="img"
@@ -392,7 +429,7 @@ const EditClient = () => {
 
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={sumbittClint}
                       >
                         Add
@@ -404,40 +441,42 @@ const EditClient = () => {
               </div>
             </div>
 
-            <div class="row justify-content-end">
+            <div className="row justify-content-end">
               <div>
-                <section id="clients" class="wow fadeInUp col-9">
-                  <div class="container">
+                <section id="clients" className="wow fadeInUp col-9">
+                  <div className="container">
                     <div
-                      class="section-header"
+                      className="section-header"
                       //   th:object="${clientText}"
                     >
                       <h2>Client Text</h2>
                       <form
                         name="sentMessage"
-                        class="well"
+                        className="well"
                         id="contactForm"
-                        method="POST"
                         row="8"
                       >
-                        <div class="control-group">
-                          <div class="form-group">
+                        <div className="control-group">
+                          <div className="form-group">
                             <textarea
-                              class="form-control"
+                              className="form-control"
                               rows="8"
                               placeholder="About Clients"
                               id="name"
                               required
                               name="detailText"
+                              onChange={getClintText}
+                              value={clintText}
                             ></textarea>
                           </div>
                         </div>
-                        <div id="success"></div>
+                        <div id="success">{clintErr}</div>
                         <br />
 
                         <button
+                          onClick={submitClientTxt}
                           type="submit"
-                          class="btn btn-primary pull-right"
+                          className="btn btn-primary pull-right"
                         >
                           Save
                         </button>
@@ -445,7 +484,7 @@ const EditClient = () => {
                       </form>
                     </div>
                   </div>
-                  <div class="owl-carousel clients-carousel">
+                  <div className="owl-carousel clients-carousel">
                     {cliImg.length > 0 ? (
                       cliImg.map((val, index) => (
                         <Link text="client" target="_blank" to={`${val.link}`}>

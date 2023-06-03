@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Axios from "axios";
 import Footer from "../../Footer/Footer";
 
@@ -7,7 +7,7 @@ const EditClient = () => {
   const { id } = useParams();
   const inputRef = useRef(null);
   const push = useNavigate();
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [err, setErr] = useState("");
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -44,7 +44,7 @@ const EditClient = () => {
       setLink(response.data.link);
       setImg(response.data.imgPath);
     });
-  }, []);
+  }, [id]);
   const sumbittClint = (e) => {
     e.preventDefault();
     let formData = new FormData();
@@ -57,7 +57,7 @@ const EditClient = () => {
     Axios.put(`http://localhost:1111/Admin/editClient/edit/${id}`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "POSTED") {
+      if (response.data.msg === "POSTED") {
         // setErr(false);
         // setName("");
         // setCountry("");
@@ -74,7 +74,7 @@ const EditClient = () => {
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Add or Edit Clients </span>
             <br />
@@ -84,19 +84,19 @@ const EditClient = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
-                    <form name="sentMessage" class="well" id="contactForm">
-                      <div class="control-group">
-                        <div class="form-group">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
+                    <form name="sentMessage" className="well" id="contactForm">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Organization Name"
                             id="name"
                             required
@@ -106,11 +106,11 @@ const EditClient = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             name="country"
-                            class="form-control selectpicker countrypicker"
+                            className="form-control selectpicker countrypicker"
                             placeholder="Country name"
                             data-default="Ethiopia"
                             data-flag="true"
@@ -119,11 +119,11 @@ const EditClient = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <select
                             name="type"
-                            class="selectpicker form-control"
+                            className="selectpicker form-control"
                             onChange={getType}
                             value={type}
                           >
@@ -137,11 +137,11 @@ const EditClient = () => {
                           </select>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="link to Organazation"
                             id="name"
                             required
@@ -151,12 +151,12 @@ const EditClient = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="file"
                             name="img"
-                            class="form-control"
+                            className="form-control"
                             placeholder="logo"
                             // value="Logo"
                             id="img"
@@ -172,7 +172,7 @@ const EditClient = () => {
 
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         onClick={sumbittClint}
                       >
                         Add

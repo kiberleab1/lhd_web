@@ -21,7 +21,7 @@ const RegisterAdmin = () => {
     Axios.post(`http://localhost:1111/register_user`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "User POSTED") {
+      if (response.data.msg === "User POSTED") {
         setemail("");
         setpassword("");
         setErr("");
@@ -35,42 +35,41 @@ const RegisterAdmin = () => {
   return (
     <div>
       <section
-        class="site-hero site-hero-innerpage overlay"
+        className="site-hero site-hero-innerpage overlay"
         data-stellar-background-ratio="0.5"
         // style="background-image: url(images/big_image_1.jpg);"
       >
-        <div class="container">
-          <div class="row align-items-center site-hero-inner justify-content-center">
-            <div class="col-md-12 text-center"></div>
+        <div className="container">
+          <div className="row align-items-center site-hero-inner justify-content-center">
+            <div className="col-md-12 text-center"></div>
           </div>
         </div>
       </section>
-      <section class="site-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <h3 class="mb-5">Register</h3>
+      <section className="site-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <h3 className="mb-5">Register</h3>
 
               <form
                 autocomplete="off"
                 method="post"
-                class="m-t"
-                role="form"
+                className="m-t"
                 data-toggle="validator"
               >
-                <div class="row">
-                  <div class="col-md-12 form-group">
-                    <div class="form-group input-group has-feedback">
-                      <span class="input-group-addon">
+                <div className="row">
+                  <div className="col-md-12 form-group">
+                    <div className="form-group input-group has-feedback">
+                      <span className="input-group-addon">
                         {" "}
-                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span className="glyphicon glyphicon-envelope"></span>
                       </span>{" "}
                       <input
                         type="email"
                         name="email"
                         id="email"
                         placeholder="Email Address"
-                        class="form-control"
+                        className="form-control"
                         onChange={getemail}
                         value={email}
                         required
@@ -79,16 +78,16 @@ const RegisterAdmin = () => {
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-12 form-group">
-                    <div class="form-group input-group has-feedback">
+                <div className="row">
+                  <div className="col-md-12 form-group">
+                    <div className="form-group input-group has-feedback">
                       <input
                         type="password"
                         id="password"
                         height="25px"
                         name="password"
                         placeholder="password"
-                        class="form-control"
+                        className="form-control"
                         onChange={getpassword}
                         value={password}
                         required
@@ -97,17 +96,17 @@ const RegisterAdmin = () => {
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6 form-group"></div>
+                <div className="row">
+                  <div className="col-md-6 form-group"></div>
 
-                  <div class="text-success">{success}</div>
-                  <div class="text-danger">{err}</div>
+                  <div className="text-success">{success}</div>
+                  <div className="text-danger">{err}</div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
+                <div className="row">
+                  <div className="col-md-6 form-group">
                     <button
                       type="submit"
-                      class="btn btn-lg btn-primary"
+                      className="btn btn-lg btn-primary"
                       style={{ marginLight: 10, width: 274 }}
                       onClick={addAdmin}
                     >
@@ -117,10 +116,10 @@ const RegisterAdmin = () => {
                 </div>
               </form>
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-5">
-              <p class="mb-5" />
-              <img src="images/img_4.jpg" alt="" class="img-fluid" />
+            <div className="col-md-1"></div>
+            <div className="col-md-5">
+              <p className="mb-5" />
+              <img src="images/img_4.jpg" alt="" className="img-fluid" />
             </div>
           </div>
         </div>

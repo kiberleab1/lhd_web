@@ -3,15 +3,16 @@ import Axios from "axios";
 import Footer from "../../Footer/Footer";
 const Clients_in_ethiopia = () => {
   //Proposal
-  const [Proposal, setProposal] = useState([]); //////?????
-  useEffect(() => {
-    Axios.get(`http://localhost:1111/on/propsal`, {
-      withCredentials: true,
-    }).then((response) => {
-      setProposal(response.data);
-    });
-  }, []);
-  //gov
+  // const [Proposal, setProposal] = useState([]);
+  // useEffect(() => {
+  //   Axios.get(`http://localhost:1111/on/propsal`, {
+  //     withCredentials: true,
+  //   }).then((response) => {
+  //     setProposal(response.data);
+  //   });
+  // }, []);
+
+  //gov;
   const [gov, setGov] = useState([]);
   useEffect(() => {
     Axios.get(`http://localhost:1111/eth/gov`, {
@@ -38,10 +39,19 @@ const Clients_in_ethiopia = () => {
       setUn(response.data);
     });
   }, []);
+  const [serOtherText, setserOtherText] = useState([]);
+
+  useEffect(() => {
+    Axios.get(`http://localhost:1111/client/about`, {
+      withCredentials: true,
+    }).then((response) => {
+      setserOtherText([response.data]);
+    });
+  }, []);
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Our Clients In Ethiopia</span>
             <br />
@@ -51,38 +61,46 @@ const Clients_in_ethiopia = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
-          <div class="section-header">
-            <p text="detailText"></p>
+        <section id="contact" className="wow fadeInUp">
+          <div className="section-header">
+            {serOtherText.length > 0 ? (
+              serOtherText.map((val, index) => (
+                <p text="detailText" key={index}>
+                  {val.detailText}
+                </p>
+              ))
+            ) : (
+              <>clientText</>
+            )}
           </div>
-          <div class="row">
-            <div class="col-3">
-              <div class="list-group" id="list-tab" role="tablist">
+          <div className="row">
+            <div className="col-3">
+              <div className="list-group" id="list-tab" role="tablist">
                 <a
-                  class="list-group-item list-group-item-action active"
+                  className="list-group-item list-group-item-action active"
                   id="list-home-list"
                   data-toggle="list"
-                  href="/list-home"
+                  href="#list-home"
                   role="tab"
                   aria-controls="home"
                 >
                   UN Agencies
                 </a>
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-profile-list"
                   data-toggle="list"
-                  href="/list-profile"
+                  href="#list-profile"
                   role="tab"
                   aria-controls="profile"
                 >
                   Govermental Organizations
                 </a>
                 <a
-                  class="list-group-item list-group-item-action"
+                  className="list-group-item list-group-item-action"
                   id="list-messages-list"
                   data-toggle="list"
-                  href="/list-messages"
+                  href="#list-messages"
                   role="tab"
                   aria-controls="messages"
                 >
@@ -90,15 +108,15 @@ const Clients_in_ethiopia = () => {
                 </a>
               </div>
             </div>
-            <div class="col-8">
-              <div class="tab-content" id="nav-tabContent">
+            <div className="col-8">
+              <div className="tab-content" id="nav-tabContent">
                 <div
-                  class="tab-pane fade show active"
-                  id="list-home"
+                  // className="tab-pane fade show active"
+                  href="#list-home"
                   role="tabpanel"
                   aria-labelledby="list-home-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -120,12 +138,12 @@ const Clients_in_ethiopia = () => {
                   </table>
                 </div>
                 <div
-                  // class="tab-pane fade"
+                  // className="tab-pane fade"
                   id="list-profile"
                   role="tabpanel"
                   aria-labelledby="list-profile-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -147,13 +165,13 @@ const Clients_in_ethiopia = () => {
                   </table>
                 </div>
                 <div
-                  // class="tab-pane fade"
+                  // className="tab-pane fade"
                   id="list-messages"
                   role="tabpanel"
                   aria-labelledby="list-messages-list"
                 >
                   <div>
-                    <table class="table table-striped">
+                    <table className="table table-striped">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -175,13 +193,13 @@ const Clients_in_ethiopia = () => {
                     </table>
                   </div>
                 </div>
-                <div
-                  // class="tab-pane fade"
+                {/* <div
+                  // className="tab-pane fade"
                   id="list-settings"
                   role="tabpanel"
                   aria-labelledby="list-settings-list"
                 >
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -197,11 +215,11 @@ const Clients_in_ethiopia = () => {
                           </tr>
                         ))
                       ) : (
-                        <h4>no proposal data inserted</h4>
+                        <h6>No proposal Experiance inserted</h6>
                       )}
                     </tbody>
                   </table>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

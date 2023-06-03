@@ -3,10 +3,10 @@ import "./style.css";
 const Footer = () => {
   return (
     <div id="footer">
-      <div class="copyright">
+      <div className="copyright">
         &copy; Copyright <strong>BizTech</strong>. All Rights Reserved
       </div>
-      <div class="credits">
+      <div className="credits">
         Best
         <a href="https://webthemez.com/free-bootstrap-templates/">
           Bootstrap Templates

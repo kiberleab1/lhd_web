@@ -3,7 +3,7 @@ import Axios from "axios";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { addRole } from "../../../Redux/Slice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const push = useNavigate();
@@ -24,7 +24,7 @@ const Login = () => {
     Axios.post("http://localhost:1111/login", formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "admin") {
+      if (response.data.msg === "admin") {
         setErr(false);
         //  sessionStorage.setItem("userId", response.data.id);
         dispatch(addRole(response.data.msg)); //redux
@@ -37,26 +37,26 @@ const Login = () => {
   };
 
   return (
-    <div class="loginpage">
+    <div className="loginpage">
       <section
-        class="site-hero site-hero-innerpage overlay"
+        className="site-hero site-hero-innerpage overlay"
         data-stellar-background-ratio="0.5"
         // style="background-image: url(images/big_image_1.jpg);"
       >
-        <div class="container">
-          <div class="row align-items-center site-hero-inner justify-content-center">
-            <div class="col-md-12 text-center"></div>
+        <div className="container">
+          <div className="row align-items-center site-hero-inner justify-content-center">
+            <div className="col-md-12 text-center"></div>
           </div>
         </div>
       </section>
-      <section class="site-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <h2 class="mb-5">login Form</h2>
+      <section className="site-section">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <h2 className="mb-5">login Form</h2>
               <form>
                 {errors ? (
-                  <div className="alert alert-danger">
+                  <div classNameName="alert alert-danger">
                     Invalid username or password.
                   </div>
                 ) : (
@@ -64,18 +64,18 @@ const Login = () => {
                 )}
 
                 {/* <div th:if="${param.logout}">
-                    <div class="alert alert-info">
+                    <div className="alert alert-info">
                       You have been logged out.
                     </div>
                   </div> */}
-                <div class="row">
-                  <div class="col-md-12 form-group">
+                <div className="row">
+                  <div className="col-md-12 form-group">
                     <label for="username">Email</label>:
                     <input
                       type="email"
                       id="username"
                       name="email"
-                      class="form-control"
+                      className="form-control"
                       autofocus="autofocus"
                       placeholder="Email"
                       autoComplete="off"
@@ -85,14 +85,14 @@ const Login = () => {
                     />
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-12 form-group">
+                <div className="row">
+                  <div className="col-md-12 form-group">
                     <label for="password">Password</label>
                     <input
                       type="password"
                       id="password"
                       name="password"
-                      class="form-control"
+                      className="form-control"
                       placeholder="**********"
                       required
                       minlength="8"
@@ -101,18 +101,18 @@ const Login = () => {
                     />
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    {/* <!-- <input type="submit" value="login" class="btn btn-primary"> --> */}
+                <div className="row">
+                  <div className="col-md-6 form-group">
+                    {/* <!-- <input type="submit" value="login" className="btn btn-primary"> --> */}
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
+                <div className="row">
+                  <div className="col-md-6 form-group">
                     <input
                       type="submit"
                       name="login-submit"
                       id="login-submit"
-                      class="form-control btn btn-primary"
+                      className="form-control btn btn-primary"
                       value="Log In"
                       onClick={submitt}
                     />{" "}
@@ -124,40 +124,40 @@ const Login = () => {
                   </div>
                 </div>
               </form>
-              <div class="col-md-1"></div>
+              <div className="col-md-1"></div>
             </div>
           </div>
         </div>
       </section>
       <section
-        class="section-cover"
+        className="section-cover"
         data-stellar-background-ratio="0.5"
         // style="background-image: url(images/img_5.jpg);"
       >
-        <div class="container">
-          <div class="row justify-content-center align-items-center intro">
-            <div class="col-md-9 text-center element-animate">
-              <div class="btn-play-wrap">
+        <div className="container">
+          <div className="row justify-content-center align-items-center intro">
+            <div className="col-md-9 text-center element-animate">
+              <div className="btn-play-wrap">
                 <a
                   href="https://vimeo.com/channels/staffpicks/93951774"
-                  class="btn-play popup-vimeo "
+                  className="btn-play popup-vimeo "
                 >
-                  <span class="ion-ios-play"></span>
+                  <span className="ion-ios-play"></span>
                 </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <footer id="footer" class="midnight-blue">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6">
+      <footer id="footer" className="midnight-blue">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-6">
               &copy; Gp Theme. All Rights Reserved.
-              <div class="credits"></div>
+              <div className="credits"></div>
             </div>
-            <div class="col-sm-6">
-              <ul class="pull-right">
+            <div className="col-sm-6">
+              <ul className="pull-right">
                 <li>
                   <a href="/lhd/about">Home</a>
                 </li>

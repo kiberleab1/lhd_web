@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [service, setservice] = useState([]);
   const [vcc, setVcc] = useState([]);
-
   useEffect(() => {
     Axios.get(`http://localhost:1111/all/service`, {
       withCredentials: true,
@@ -23,6 +22,16 @@ const Home = () => {
       withCredentials: true,
     }).then((response) => {
       setVcc(response.data);
+    });
+  }, []);
+
+  const [serviceOther, setServiceOther] = useState([]);
+
+  useEffect(() => {
+    Axios.get(`http://localhost:1111/service/othertext`, {
+      withCredentials: true,
+    }).then((response) => {
+      setServiceOther([response.data]);
     });
   }, []);
   return (
@@ -59,12 +68,15 @@ const Home = () => {
           <div className="container">
             <div className="section-header">
               <h2>Services</h2>
-              <p></p>
+              {serviceOther.length > 0 ? (
+                serviceOther.map((val, index) => <p>{val.detailText}</p>)
+              ) : (
+                <div className="container">Add Single Services</div>
+              )}
             </div>
-
-            <div className="row">
-              {service.length > 0 ? (
-                service.map((val, index) => (
+            {service.length > 0 ? (
+              service.map((val, index) => (
+                <div className="row" key={index}>
                   <div className="col-lg-4">
                     <div className="box wow fadeInLeft">
                       <div className="icon">
@@ -78,11 +90,11 @@ const Home = () => {
                       <p className="description text-dark">{val.detailText}</p>
                     </div>
                   </div>
-                ))
-              ) : (
-                <></>
-              )}
-            </div>
+                </div>
+              ))
+            ) : (
+              <div className="container">Add All Services</div>
+            )}
           </div>
         </section>
         <section id="call-to-action" className="wow fadeInUp">
@@ -90,12 +102,20 @@ const Home = () => {
             <div className="row">
               <div className="col-lg-9 text-center text-lg-left">
                 <h3 className="cta-title">Get Our Service</h3>
-                <p className="cta-text"></p>
+                {serviceOther.length > 0 ? (
+                  serviceOther.map((val, index) => (
+                    <p className="cta-text" key={index}>
+                      {val.detailText}
+                    </p>
+                  ))
+                ) : (
+                  <>Add single Services</>
+                )}
               </div>
               <div className="col-lg-3 cta-btn-container text-center">
-                <a className="cta-btn align-middle" href="/lhd/Contact">
+                <Link className="cta-btn align-middle" to={"/lhd/Contact"}>
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>
