@@ -210,9 +210,10 @@ const Experience = () => {
                 >
                   <table className="table table-striped">
                     <thead>
-                      {all.length > 0 ? (
-                        all.map((val, index) => (
-                          <tbody>
+                      <tbody>
+                        {" "}
+                        {all.length > 0 ? (
+                          all.map((val, index) => (
                             <tr text="health">
                               <td style={{ display: "none", width: 0 }}></td>
                               <td>
@@ -221,21 +222,27 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Title:</td>
+                                    <td
+                                      style={{ width: 100, paddingRight: 20 }}
+                                    >
+                                      Title:
+                                    </td>
                                     <td>{val.title}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Client:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Client:
+                                    </td>
                                     <td>{val.client}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
                                       Objective of the study:
                                     </td>
                                     <td>{val.objective}</td>
@@ -244,17 +251,19 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Methodology:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Methodology:
+                                    </td>
                                     <td>{val.methodlogy}</td>
                                   </tr>
                                 </table>
                               </td>
                             </tr>
-                          </tbody>
-                        ))
-                      ) : (
-                        <h6>No health exp data updated</h6>
-                      )}
+                          ))
+                        ) : (
+                          <h6>No health exp data updated</h6>
+                        )}
+                      </tbody>
                     </thead>
                   </table>
                 </div>
@@ -267,9 +276,9 @@ const Experience = () => {
                 >
                   <table className="table table-striped">
                     <thead>
-                      {water.length > 0 ? (
-                        water.map((val, index) => (
-                          <tbody>
+                      <tbody>
+                        {water.length > 0 ? (
+                          water.map((val, index) => (
                             <tr text="water">
                               <td style={{ display: "none", width: 0 }}></td>
                               <td>
@@ -278,21 +287,25 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Title:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Title:
+                                    </td>
                                     <td>{val.title}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Client:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Client:
+                                    </td>
                                     <td>{val.client}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
                                       Objective of the study:
                                     </td>
                                     <td>{val.objective}</td>
@@ -301,17 +314,19 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Methodology:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Methodology:
+                                    </td>
                                     <td>{val.methodlogy}</td>
                                   </tr>
                                 </table>
                               </td>
                             </tr>
-                          </tbody>
-                        ))
-                      ) : (
-                        <h6>No water exp data updated</h6>
-                      )}
+                          ))
+                        ) : (
+                          <h6>No water exp data updated</h6>
+                        )}
+                      </tbody>
                     </thead>
                   </table>
                 </div>
@@ -323,11 +338,12 @@ const Experience = () => {
                   aria-labelledby="list-food-list"
                 >
                   {" "}
-                  {Food.length > 0 ? (
-                    Food.map((val, index) => (
-                      <table className="table table-striped">
-                        <thead>
-                          <tbody>
+                  <table className="table table-striped">
+                    <thead>
+                      <tbody>
+                        {" "}
+                        {Food.length > 0 ? (
+                          Food.map((val, index) => (
                             <tr text="food">
                               <td style={{ display: "none", width: 0 }}></td>
                               <td>
@@ -336,21 +352,25 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Title:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Title:
+                                    </td>
                                     <td>{val.title}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Client:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Client:
+                                    </td>
                                     <td>{val.client}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
                                       Objective of the study:
                                     </td>
                                     <td>{val.objective}</td>
@@ -359,19 +379,21 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Methodology:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Methodology:
+                                    </td>
                                     <td>{val.methodlogy}</td>
                                   </tr>
                                 </table>
                               </td>
                             </tr>
-                          </tbody>
-                        </thead>
-                      </table>
-                    ))
-                  ) : (
-                    <h6>No food exp updated</h6>
-                  )}
+                          ))
+                        ) : (
+                          <h6>No food exp updated</h6>
+                        )}
+                      </tbody>
+                    </thead>
+                  </table>
                 </div>
                 <div
                   // className="tab-pane fade"
@@ -380,11 +402,11 @@ const Experience = () => {
                   aria-labelledby="list-hiv-list"
                 >
                   {" "}
-                  {hiv.length > 0 ? (
-                    hiv.map((val, index) => (
-                      <table className="table table-striped">
-                        <thead>
-                          <tbody>
+                  <table className="table table-striped">
+                    <thead>
+                      <tbody>
+                        {hiv.length > 0 ? (
+                          hiv.map((val, index) => (
                             <tr text="hiv">
                               <td style={{ display: "none", width: 0 }}></td>
                               <td>
@@ -393,21 +415,25 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>Title:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Title:
+                                    </td>
                                     <td>{val.title}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: "20px" }}>Client:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Client:
+                                    </td>
                                     <td>{val.client}</td>
                                   </tr>
                                   <tr>
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td style={{ width: 20 }}>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
                                       Objective of the study:
                                     </td>
                                     <td>{val.objective}</td>
@@ -416,19 +442,21 @@ const Experience = () => {
                                     <td
                                       style={{ display: "none", width: 0 }}
                                     ></td>
-                                    <td>Methodology:</td>
+                                    <td style={{ width: 20, paddingRight: 20 }}>
+                                      Methodology:
+                                    </td>
                                     <td>{val.methodlogy}</td>
                                   </tr>
                                 </table>
                               </td>
                             </tr>
-                          </tbody>
-                        </thead>
-                      </table>
-                    ))
-                  ) : (
-                    <h6>No hiv exp data updated</h6>
-                  )}
+                          ))
+                        ) : (
+                          <h6>No hiv exp data updated</h6>
+                        )}
+                      </tbody>
+                    </thead>
+                  </table>
                 </div>
                 <div
                   // className="tab-pane fade"
@@ -436,31 +464,29 @@ const Experience = () => {
                   role="tabpanel"
                   aria-labelledby="list-profile-list"
                 >
-                  {Strat.length > 0 ? (
-                    Strat.map((val, index) => (
-                      <table className="table table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">
-                              Strategic and Training Materials
-                            </th>
-                            <th scope="col">Client</th>
-                          </tr>
-                        </thead>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Strategic and Training Materials</th>
+                        <th scope="col">Client</th>
+                      </tr>
+                    </thead>
 
-                        <tbody>
-                          <tr>
-                            <td key={index}></td>
+                    <tbody>
+                      {Strat.length > 0 ? (
+                        Strat.map((val, index) => (
+                          <tr key={index}>
+                            <td></td>
                             <td>{val.detailText}</td>
                             <td>{val.client}</td>
                           </tr>
-                        </tbody>
-                      </table>
-                    ))
-                  ) : (
-                    <h4>no strat file inserted</h4>
-                  )}
+                        ))
+                      ) : (
+                        <h4>no strat file inserted</h4>
+                      )}
+                    </tbody>
+                  </table>
                 </div>
                 <div
                   // className="tab-pane fade"
@@ -469,28 +495,28 @@ const Experience = () => {
                   aria-labelledby="list-messages-list"
                 >
                   <div>
-                    {Assist.length > 0 ? (
-                      Assist.map((val, index) => (
-                        <table className="table table-striped">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Technical Assistance</th>
-                              <th scope="col">Client</th>
-                            </tr>
-                          </thead>
-                          <tbody>
+                    <table className="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Technical Assistance</th>
+                          <th scope="col">Client</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {Assist.length > 0 ? (
+                          Assist.map((val, index) => (
                             <tr key={index}>
                               <td></td>
                               <td>{val.detailText}</td>
                               <td>{val.client}</td>
                             </tr>
-                          </tbody>
-                        </table>
-                      ))
-                    ) : (
-                      <h4>no assist file inserted</h4>
-                    )}
+                          ))
+                        ) : (
+                          <h4>no assist file inserted</h4>
+                        )}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
                 <div
@@ -499,28 +525,28 @@ const Experience = () => {
                   role="tabpanel"
                   aria-labelledby="list-settings-list"
                 >
-                  {Proposal.length > 0 ? (
-                    Proposal.map((val, index) => (
-                      <table className="table table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Proposal Development</th>
-                            <th scope="col">Client</th>
-                          </tr>
-                        </thead>
-                        <tbody>
+                  <table className="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Proposal Development</th>
+                        <th scope="col">Client</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {Proposal.length > 0 ? (
+                        Proposal.map((val, index) => (
                           <tr key={index}>
                             <td></td>
                             <td>{val.detailText}</td>
                             <td>{val.client}</td>
                           </tr>
-                        </tbody>
-                      </table>
-                    ))
-                  ) : (
-                    <h4>no proposal data inserted</h4>
-                  )}
+                        ))
+                      ) : (
+                        <h4>no proposal data inserted</h4>
+                      )}
+                    </tbody>
+                  </table>
                 </div>
                 <div
                   // className="tab-pane fade"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
+import Input from "../InputFormat";
 const EditResearch = () => {
   const push = useNavigate();
 
@@ -91,57 +92,57 @@ const EditResearch = () => {
             </div>
             <div className="control-group">
               <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Title"
+                <Input
+                  TextType="text"
+                  InputClassName="form-control"
+                  OnPlaceHolder="Title"
                   id="name"
                   required
-                  name="title"
-                  onChange={getTitle}
-                  value={titles}
+                  NameOfInput="title"
+                  OnChangingInputs={getTitle}
+                  ValueOfInput={titles}
                 />
               </div>
             </div>
             <div className="control-group">
               <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Client"
+                <Input
+                  TextType="text"
+                  InputClassName="form-control"
+                  OnPlaceHolder="Client"
                   id="name"
                   required
-                  name="client"
-                  onChange={getRclient}
-                  value={clients}
+                  NameOfInput="client"
+                  OnChangingInputs={getRclient}
+                  ValueOfInput={clients}
                 />
               </div>
             </div>
             <div className="control-group">
               <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Methodlogy"
+                <Input
+                  TextType="text"
+                  InputClassName="form-control"
+                  OnPlaceHolder="Methodlogy"
                   id="name"
                   required
-                  name="methodlogy"
-                  onChange={getmethodlogy}
-                  value={methodlogys}
+                  NameOfInput="methodlogy"
+                  OnChangingInputs={getmethodlogy}
+                  ValueOfInput={methodlogys}
                 />
               </div>
             </div>
             <div className="control-group">
               <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Objective"
+                <Input
+                  TextType="text"
+                  InputClassName="form-control"
+                  OnPlaceHolder="Objective"
                   id="name"
                   required
-                  name="objective"
-                  onChange={getobjective}
-                  value={objectives}
+                  NameOfInput="objective"
+                  OnChangingInputs={getobjective}
+                  ValueOfInput={objectives}
                 />
               </div>
             </div>

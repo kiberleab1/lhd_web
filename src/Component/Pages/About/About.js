@@ -244,7 +244,9 @@ const About = () => {
                 <div className="col-lg-6 content">
                   {OperationalCapacity.length > 0 ? (
                     OperationalCapacity.map((val, index) => (
-                      <p key={index}>{val.detailText}</p>
+                      <p key={index} style={{ color: "black" }}>
+                        {val.detailText}
+                      </p>
                     ))
                   ) : (
                     <>Add OperationalCapacity</>
