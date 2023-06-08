@@ -39,7 +39,7 @@ const EditService = () => {
         setServiceName("");
         setDetailText("");
         inputRef.current.value = null;
-        return push("/Admin/Home");
+        return push("/Admin/editService");
       } else {
         setErr(response.data);
       }

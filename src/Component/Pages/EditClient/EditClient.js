@@ -39,15 +39,57 @@ const EditClient = () => {
     Axios.post("http://localhost:1111/registeringClints", formData, {
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
-      if (response.data.msg === "POSTED") {
+      if (response.data.msg === "un") {
         setErr(false);
         setName("");
         setCountry("");
         setType("");
         setLink("");
         inputRef.current.value = null;
-        // return window.location.reload();
+        setUn([
+          ...un,
+          {
+            link: link,
+            name: name,
+            imgPath: img,
+            type: type,
+            country: country,
+          },
+        ]);
+      } else if (response.data.msg === "gov") {
+        setErr(false);
+        setName("");
+        setCountry("");
+        setType("");
+        setLink("");
+        inputRef.current.value = null;
+        setGov([
+          ...gov,
+          {
+            link: link,
+            name: name,
+            imgPath: img,
+            type: type,
+            country: country,
+          },
+        ]);
+      } else if (response.data.msg === "nongov") {
+        setErr(false);
+        setName("");
+        setCountry("");
+        setType("");
+        setLink("");
+        inputRef.current.value = null;
+        setNongov([
+          ...nongov,
+          {
+            link: link,
+            name: name,
+            imgPath: img,
+            type: type,
+            country: country,
+          },
+        ]);
       } else {
         setErr(response.data);
       }

@@ -32,7 +32,10 @@ const Edit_Services = () => {
         setServiceName("");
         setDetailText("");
         inputRef.current.value = null;
-        // return window.location.reload();
+        setAllService([
+          ...all,
+          { serviceName: serviceName, detailText: detailText },
+        ]);
       } else {
         setErr(response.data);
       }

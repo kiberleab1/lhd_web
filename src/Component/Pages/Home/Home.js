@@ -104,7 +104,11 @@ const Home = () => {
                 <h3 className="cta-title">Get Our Service</h3>
                 {serviceOther.length > 0 ? (
                   serviceOther.map((val, index) => (
-                    <p className="cta-text" key={index}>
+                    <p
+                      className="cta-text"
+                      style={{ color: "black" }}
+                      key={index}
+                    >
                       {val.detailText}
                     </p>
                   ))

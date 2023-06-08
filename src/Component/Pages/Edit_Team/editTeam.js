@@ -71,7 +71,7 @@ const EditTestimones = () => {
     }).then((response) => {
       if (response.data.msg === "TEAM updated") {
         setTeamerr(false);
-        return push("/Admin/Home");
+        return push("/Admin/editAbout");
       } else {
         setTeamerr(response.data);
       }

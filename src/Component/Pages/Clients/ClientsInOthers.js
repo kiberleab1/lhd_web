@@ -106,33 +106,33 @@ const ClientsInOthers = () => {
               <div className="col-12">
                 <div className="tab-content" id="nav-tabContent">
                   <div
-                    className="tab-pane fade show active"
+                    // className="tab-pane fade show active"
                     id="list-home"
                     role="tabpanel"
                     aria-labelledby="list-home-list"
                   >
-                    {forignUN.length > 0 ? (
-                      forignUN.map((val, index) => (
-                        <table className="table table-striped">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Organization</th>
-                              <th scope="col">Country</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr text="unClients">
+                    <table className="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Organization</th>
+                          <th scope="col">Country</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {forignUN.length > 0 ? (
+                          forignUN.map((val, index) => (
+                            <tr text="unClients" key={index}>
                               <td></td>
                               <td>{val.name}</td>
                               <td>{val.country}</td>
                             </tr>
-                          </tbody>
-                        </table>
-                      ))
-                    ) : (
-                      <>Insert Forign UN Clients</>
-                    )}
+                          ))
+                        ) : (
+                          <>Insert Forign UN Clients</>
+                        )}
+                      </tbody>
+                    </table>
                   </div>
                   <div
                     // className="tab-pane fade"
@@ -140,28 +140,28 @@ const ClientsInOthers = () => {
                     role="tabpanel"
                     aria-labelledby="list-profile-list"
                   >
-                    {forignGov.length > 0 ? (
-                      forignGov.map((val, index) => (
-                        <table className="table table-striped">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Organization</th>
-                              <th scope="col">Country</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr text="govClients">
+                    <table className="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Organization</th>
+                          <th scope="col">Country</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {forignGov.length > 0 ? (
+                          forignGov.map((val, index) => (
+                            <tr text="govClients" key={index}>
                               <td></td>
                               <td>{val.name}</td>
                               <td>{val.country}</td>
                             </tr>
-                          </tbody>
-                        </table>
-                      ))
-                    ) : (
-                      <>Insert Forign Goverment Clients</>
-                    )}
+                          ))
+                        ) : (
+                          <>Insert Forign Goverment Clients</>
+                        )}
+                      </tbody>
+                    </table>
                   </div>
                   <div
                     // className="tab-pane fade"
@@ -171,28 +171,28 @@ const ClientsInOthers = () => {
                   >
                     <div>
                       {" "}
-                      {forignNonGov.length > 0 ? (
-                        forignNonGov.map((val, index) => (
-                          <table className="table table-striped">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Organization</th>
-                                <th scope="col">Country</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr text="nongovClients">
+                      <table className="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Organization</th>
+                            <th scope="col">Country</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {forignNonGov.length > 0 ? (
+                            forignNonGov.map((val, index) => (
+                              <tr text="nongovClients" key={index}>
                                 <td></td>
                                 <td>{val.name}</td>
                                 <td>{val.country}</td>
                               </tr>
-                            </tbody>
-                          </table>
-                        ))
-                      ) : (
-                        <>Insert Forign Non-Goverment Clients</>
-                      )}
+                            ))
+                          ) : (
+                            <>Insert Forign Non-Goverment Clients</>
+                          )}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>

@@ -122,7 +122,7 @@ const SubLayout = () => {
                   <NavLink to="/Admin/editContact">Contact</NavLink>
                 </li>
                 <li>
-                  <button onClick={LogOut}>Logout</button>
+                  <Link onClick={LogOut}> Logout</Link>
                 </li>
               </ul>
             </nav>

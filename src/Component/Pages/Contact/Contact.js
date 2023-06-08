@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
+import Input from "../InputFormat";
 const Contact = () => {
   const form = useRef();
   const [name, setname] = useState("");
@@ -117,30 +118,31 @@ const Contact = () => {
                     >
                       <div className="control-group">
                         <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Full Name"
+                          <Input
+                            TextType="text"
+                            InputClassName="form-control"
+                            OnPlaceHolder="Full Name"
                             id="name"
                             required
-                            name="name"
-                            onChange={getName}
-                            value={name}
+                            NameOfInput="name"
+                            OnChangingInputs={getName}
+                            ValueOfInput={name}
                           />
+
                           <p className="help-block"></p>
                         </div>
                       </div>
                       <div className="form-group">
                         <div className="controls">
-                          <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Email"
+                          <Input
+                            TextType="email"
+                            InputClassName="form-control"
+                            OnPlaceHolder="Email"
                             id="email"
                             required
-                            name="email"
-                            onChange={getemail}
-                            value={email}
+                            NameOfInput="email"
+                            OnChangingInputs={getemail}
+                            ValueOfInput={email}
                           />
                         </div>
                       </div>
@@ -166,9 +168,7 @@ const Contact = () => {
                         </div>
                       </div>
                       <div id="success">{err} </div>
-                      {/* <a href="mailto:zemelatmen@gmail.com?subject='Hello from Abstract!'&body='Just popped in to say hello'">
-                        Click to Send an Email{" "}
-                      </a> */}
+
                       <button
                         type="submit"
                         className="btn btn-primary pull-right"
