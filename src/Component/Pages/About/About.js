@@ -194,7 +194,7 @@ const About = () => {
                       <div className="member" key={index}>
                         <div className="pic">
                           <img
-                            src={require(`../../../../../server/uploads/${val.imgPath}`)}
+                            src={require(`../../../../../lhd_node/uploads/${val.imgPath}`)}
                             alt="teampic"
                           />
                         </div>
@@ -271,7 +271,7 @@ const About = () => {
                   clients.map((val, index) => (
                     <Link key={index} target="_blank" to={`${val.link}`}>
                       <img
-                        src={require(`../../../../../server/uploads/${val.imgPath}`)}
+                        src={require(`../../../../../lhd_node/uploads/${val.imgPath}`)}
                         alt="clientpic"
                       />
                     </Link>

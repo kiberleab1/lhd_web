@@ -8,7 +8,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { QueryClient, QueryClientProvider } from "react-query"; //react query
 import "./static/lib/animate/animate.min.css";
-import "./static/lib/bootstrap/css/bootstrap.css";
+// import "./static/lib/bootstrap/css/bootstrap.css";
 
 import "./static/css/style.css";
 import "./static/lib/ionicons/css/ionicons.min.css";

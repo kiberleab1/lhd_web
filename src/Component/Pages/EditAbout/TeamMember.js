@@ -105,7 +105,7 @@ const TeamMember = () => {
                       <div className="pic">
                         {/* {require(`../../../../../server/uploads/${val.imgPath}`)} */}
                         <img
-                          src={require(`../../../../../server/uploads/${val.imgPath}`)}
+                          src={require(`../../../../../lhd_node/uploads/${val.imgPath}`)}
                           alt="val.imgPath"
                         />
                       </div>

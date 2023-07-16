@@ -531,7 +531,7 @@ const EditClient = () => {
                       cliImg.map((val, index) => (
                         <Link text="client" target="_blank" to={`${val.link}`}>
                           <img
-                            src={require(`../../../../../server/uploads/${val.imgPath}`)}
+                            src={require(`../../../../../lhd_node/uploads/${val.imgPath}`)}
                             alt="client.imgPath"
                           />
                         </Link>

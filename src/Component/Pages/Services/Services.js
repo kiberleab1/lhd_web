@@ -104,7 +104,7 @@ const Services = () => {
                 clients.map((val, index) => (
                   <Link target="_blank" to={`${val.link}`} key={index}>
                     <img
-                      src={require(`../../../../../server/uploads/${val.imgPath}`)}
+                      src={require(`../../../../../lhd_node/uploads/${val.imgPath}`)}
                       alt="client-imgPath"
                     />
                   </Link>
