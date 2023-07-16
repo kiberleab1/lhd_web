@@ -14,33 +14,34 @@ import { BsTools } from "react-icons/bs";
 import { SiGenius } from "react-icons/si";
 import { BsFillMegaphoneFill } from "react-icons/bs";
 import { AiFillTrophy } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div>
-      <section id="hero" class="clearfix">
-        <div class="container">
-          <div class="hero-banner">
-            <img src={IndexImg} alt="IndexImg" class="img-fluid" />
+      <section id="hero" className="clearfix">
+        <div className="container">
+          <div className="hero-banner">
+            <img src={IndexImg} alt="IndexImg" className="img-fluid" />
           </div>
 
-          <div class="hero-content">
+          <div className="hero-content">
             <h2>
               Business Growth
               <br />
               <span> Consulting</span>
             </h2>
             <div>
-              <a href="#" class="btn-banner">
+              <Link to="" className="btn-banner">
                 Our Service
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </section>
       <main id="main">
-        <section id="about" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header">
+        <section id="about" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header">
               <h2>About</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -49,12 +50,12 @@ const Index = () => {
                 temporibus perferendis nesciunt..
               </p>
             </div>
-            <div class="row">
-              <div class="col-lg-6 about-img">
+            <div className="row">
+              <div className="col-lg-6 about-img">
                 <img src={AbIndexImg} alt="img/about.svg" />
               </div>
 
-              <div class="col-lg-6 content">
+              <div className="col-lg-6 content">
                 <h2>Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
                 <h3>
                   Dolores quae porro consequatur aliquam, incidunt eius magni
@@ -68,17 +69,17 @@ const Index = () => {
                 </p>
                 <ul>
                   <li>
-                    {/* <i class="icon ion-ios-checkmark-outline"></i> */}
+                    {/* <i className="icon ion-ios-checkmark-outline"></i> */}
                     <FcCheckmark /> Dolores quae porro consequatur aliquam,
                     incidunt fugiat culpa.
                   </li>
                   <li>
-                    {/* <i class="icon ion-ios-checkmark-outline"></i> */}
+                    {/* <i className="icon ion-ios-checkmark-outline"></i> */}
                     <FcCheckmark /> Dolores quae porro consequatur aliquam,
                     culpa esse aute nulla.
                   </li>
                   <li>
-                    {/* <i class="icon ion-ios-checkmark-outline"> </i>*/}
+                    {/* <i className="icon ion-ios-checkmark-outline"> </i>*/}
                     <FcCheckmark /> Dolores quae porro esse aute nulla. malis
                     nulla duis fugiat
                   </li>
@@ -88,8 +89,8 @@ const Index = () => {
           </div>
         </section>
         <section id="services">
-          <div class="container">
-            <div class="section-header">
+          <div className="container">
+            <div className="section-header">
               <h2>Services</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -99,17 +100,17 @@ const Index = () => {
               </p>
             </div>
 
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="box wow fadeInLeft">
-                  <div class="icon">
-                    {/* <i class="icon icon-briefcase"></i> */}
+            <div className="row">
+              <div className="col-lg-4">
+                <div className="box wow fadeInLeft">
+                  <div className="icon">
+                    {/* <i className="icon icon-briefcase"></i> */}
                     <BsFillBriefcaseFill />
                   </div>
-                  <h4 class="title">
-                    <a href="">Marketing</a>
+                  <h4 className="title">
+                    <Link to="">Marketing</Link>
                   </h4>
-                  <p class="description">
+                  <p className="description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores quae porro consequatur aliquam, incidunt fugiat
                     culpa esse aute nulla.
@@ -117,16 +118,16 @@ const Index = () => {
                 </div>
               </div>
 
-              <div class="col-lg-4">
-                <div class="box wow fadeInRight">
-                  <div class="icon">
+              <div className="col-lg-4">
+                <div className="box wow fadeInRight">
+                  <div className="icon">
                     <SiMicrostrategy />
-                    {/* <i class="icon icon-strategy"></i> */}
+                    {/* <i className="icon icon-strategy"></i> */}
                   </div>
-                  <h4 class="title">
-                    <a href="">Consulting</a>
+                  <h4 className="title">
+                    <Link to="">Consulting</Link>
                   </h4>
-                  <p class="description">
+                  <p className="description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores quae porro consequatur aliquam, incidunt fugiat
                     culpa esse aute nulla.
@@ -134,32 +135,32 @@ const Index = () => {
                 </div>
               </div>
 
-              <div class="col-lg-4">
-                <div class="box wow fadeInLeft" data-wow-delay="0.2s">
-                  <div class="icon">
-                    {/* <i class="icon icon-tools"></i> */}
+              <div className="col-lg-4">
+                <div className="box wow fadeInLeft" data-wow-delay="0.2s">
+                  <div className="icon">
+                    {/* <i className="icon icon-tools"></i> */}
                     <BsTools />
                   </div>
-                  <h4 class="title">
-                    <a href="">Development</a>
+                  <h4 className="title">
+                    <Link to="">Development</Link>
                   </h4>
-                  <p class="description">
+                  <p className="description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores quae porro consequatur aliquam, incidunt fugiat
                     culpa esse aute nulla.
                   </p>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="box wow fadeInLeft">
-                  <div class="icon">
+              <div className="col-lg-4">
+                <div className="box wow fadeInLeft">
+                  <div className="icon">
                     <SiGenius />
-                    {/* <i class="icon icon-genius"></i> */}
+                    {/* <i className="icon icon-genius"></i> */}
                   </div>
-                  <h4 class="title">
-                    <a href="">Financial</a>
+                  <h4 className="title">
+                    <Link to="">Financial</Link>
                   </h4>
-                  <p class="description">
+                  <p className="description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores quae porro consequatur aliquam, incidunt fugiat
                     culpa esse aute nulla.
@@ -167,15 +168,15 @@ const Index = () => {
                 </div>
               </div>
 
-              <div class="col-lg-4">
-                <div class="box wow fadeInRight">
-                  <div class="icon">
+              <div className="col-lg-4">
+                <div className="box wow fadeInRight">
+                  <div className="icon">
                     <BsFillMegaphoneFill />
                   </div>
-                  <h4 class="title">
-                    <a href="">Consulting</a>
+                  <h4 className="title">
+                    <Link to="">Consulting</Link>
                   </h4>
-                  <p class="description">
+                  <p className="description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores quae porro consequatur aliquam, incidunt fugiat
                     culpa esse aute nulla.
@@ -183,16 +184,16 @@ const Index = () => {
                 </div>
               </div>
 
-              <div class="col-lg-4">
-                <div class="box wow fadeInLeft" data-wow-delay="0.2s">
-                  <div class="icon">
-                    {/* <i class="icon icon-trophy"></i> */}
+              <div className="col-lg-4">
+                <div className="box wow fadeInLeft" data-wow-delay="0.2s">
+                  <div className="icon">
+                    {/* <i className="icon icon-trophy"></i> */}
                     <AiFillTrophy />
                   </div>
-                  <h4 class="title">
-                    <a href="">Quality</a>
+                  <h4 className="title">
+                    <Link to="">QuLinklity</Link>
                   </h4>
-                  <p class="description">
+                  <p className="description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Dolores quae porro consequatur aliquam, incidunt fugiat
                     culpa esse aute nulla.
@@ -202,9 +203,9 @@ const Index = () => {
             </div>
           </div>
         </section>
-        <section id="clients" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header">
+        <section id="clients" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header">
               <h2>Clients</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -214,7 +215,7 @@ const Index = () => {
               </p>
             </div>
 
-            <div class="owl-carousel clients-carousel">
+            <div className="owl-carousel clients-carousel">
               <img src={ImgClint1} alt="client-1.png" />{" "}
               <img src={ImgClint2} alt="" /> <img src={ImgClint5} alt="" />{" "}
               <img src={ImgClint3} alt="" /> <img src={ImgClint6} alt="" />{" "}
@@ -222,9 +223,9 @@ const Index = () => {
             </div>
           </div>
         </section>
-        <section id="testimonials" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header">
+        <section id="testimonials" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header">
               <h2>Testimonials</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -233,8 +234,8 @@ const Index = () => {
                 export irure minim illum fore
               </p>
             </div>
-            <div class="owl-carousel testimonials-carousel">
-              <div class="testimonial-item">
+            <div className="owl-carousel testimonials-carousel">
+              <div className="testimonial-item">
                 <p>
                   Dolores quae porro consequatur aliquam, incidunt fugiat culpa
                   esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit
@@ -244,7 +245,7 @@ const Index = () => {
                 <h4>CEO &amp; Founder</h4>
               </div>
 
-              <div class="testimonial-item">
+              <div className="testimonial-item">
                 <p>
                   Dolores quae porro consequatur aliquam, incidunt fugiat culpa
                   esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit
@@ -254,7 +255,7 @@ const Index = () => {
                 <h4>CTO</h4>
               </div>
 
-              <div class="testimonial-item">
+              <div className="testimonial-item">
                 <p>
                   Dolores quae porro consequatur aliquam, incidunt fugiat culpa
                   esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit
@@ -264,7 +265,7 @@ const Index = () => {
                 <h4>Marketing</h4>
               </div>
 
-              <div class="testimonial-item">
+              <div className="testimonial-item">
                 <p>
                   Dolores quae porro consequatur aliquam, incidunt fugiat culpa
                   esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit
@@ -274,7 +275,7 @@ const Index = () => {
                 <h4>Accounts</h4>
               </div>
 
-              <div class="testimonial-item">
+              <div className="testimonial-item">
                 <p>
                   Dolores quae porro consequatur aliquam, incidunt fugiat culpa
                   esse aute nulla. duis fugiat culpa esse aute nulla ipsum velit
@@ -286,20 +287,20 @@ const Index = () => {
             </div>
           </div>
         </section>
-        <section id="call-to-action" class="wow fadeInUp">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-9 text-center text-lg-left">
-                <h3 class="cta-title">Get Our Service</h3>
-                <p class="cta-text">
+        <section id="call-to-action" className="wow fadeInUp">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-9 text-center text-lg-left">
+                <h3 className="cta-title">Get Our Service</h3>
+                <p className="cta-text">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Dolores quae porro consequatur aliquam, incidunt fugiat culpa
                   esse aute nulla cupidatat non proident, sunt in culpa qui
                   officia deserunt mollit anim id est laborum.
                 </p>
               </div>
-              <div class="col-lg-3 cta-btn-container text-center">
-                <a class="cta-btn align-middle" href="/lhd/Contact">
+              <div className="col-lg-3 cta-btn-container text-center">
+                <a className="cta-btn align-middle" href="/lhd/Contact">
                   Contact Us
                 </a>
               </div>

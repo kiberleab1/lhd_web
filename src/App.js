@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./Component/PrivateRoute";
@@ -65,10 +65,10 @@ const EditExperiance = lazy(() =>
   import("./Component/Pages/EditExperiance/EditExperiance")
 );
 const EditHome = lazy(() => import("./Component/Pages/EditHome/EditHome"));
-const Edit_Services = lazy(() =>
+const EditServices = lazy(() =>
   import("./Component/Pages/EditServices/Edit_Services")
 );
-const Edit_Vaccancy = lazy(() =>
+const EditVaccancy = lazy(() =>
   import("./Component/Pages/EditVaccancy/Edit_Vaccancy")
 );
 
@@ -86,9 +86,9 @@ function App() {
   const adminRole = JSON.stringify({ text: "admin" });
   function getUrl() {
     if (
-      (window.location.href == "http://localhost:3000/RegisterAdmin" &&
-        window.location.href == "http://localhost:3000/login") ||
-      incomingRole == adminRole
+      (window.location.href === "http://localhost:3000/RegisterAdmin" &&
+        window.location.href === "http://localhost:3000/login") ||
+      incomingRole === adminRole
     ) {
       return true;
     } else {
@@ -100,8 +100,10 @@ function App() {
       {getUrl() ? <SubLayout /> : <CollapsibleExample />}
       <Suspense
         fallback={
-          <div id="loder" class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+          <div className="d-flex justify-content-center  text-primary">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
           </div>
         }
       >
@@ -112,8 +114,8 @@ function App() {
             <Route path="/Admin/EditContact" element={<EditContact />} />
             <Route path="/Admin/EditExperiance" element={<EditExperiance />} />
             <Route path="/Admin/Home" element={<EditHome />} />
-            <Route path="/Admin/EditService" element={<Edit_Services />} />
-            <Route path="/Admin/EditVaccancy" element={<Edit_Vaccancy />} />
+            <Route path="/Admin/EditService" element={<EditServices />} />
+            <Route path="/Admin/EditVaccancy" element={<EditVaccancy />} />
             <Route path="/Admin/Register" element={<RegisterAdmin />} />
             <Route path="/one/testmonial/:id" element={<EditTestimones />} />
             <Route
@@ -179,8 +181,8 @@ export default App;
 //       <Route path="/Admin/EditContact" element={<EditContact />} />
 //       <Route path="/Admin/EditExperiance" element={<EditExperiance />} />
 //       <Route path="/Admin/EditHome" element={<EditHome />} />
-//       <Route path="/Admin/EditService" element={<Edit_Services />} />
-//       <Route path="/Admin/EditVaccancy" element={<Edit_Vaccancy />} />
+//       <Route path="/Admin/EditService" element={<EditServices />} />
+//       <Route path="/Admin/EditVaccancy" element={<EditVaccancy />} />
 //       {/* login */}
 //       <Route path="/login" element={<Login />} />
 //       <Route path="/RegisterAdmin" element={<RegisterAdmin />} />

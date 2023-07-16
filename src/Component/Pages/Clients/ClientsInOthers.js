@@ -29,10 +29,19 @@ const ClientsInOthers = () => {
       setforignUN(response.data);
     });
   }, []);
+  const [serOtherText, setserOtherText] = useState([]);
+
+  useEffect(() => {
+    Axios.get(`http://localhost:1111/client/about`, {
+      withCredentials: true,
+    }).then((response) => {
+      setserOtherText([response.data]);
+    });
+  }, []);
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Our Clients In Other Countries</span>
             <br />
@@ -41,20 +50,29 @@ const ClientsInOthers = () => {
           <div></div>
         </div>
         <main id="main">
-          <section id="contact" class="wow fadeInUp">
-            <div class="section-header" text="clientText">
-              <p>detailText</p>
+          <section id="contact" className="wow fadeInUp">
+            <div className="section-header">
+              {serOtherText.length > 0 ? (
+                serOtherText.map((val, index) => (
+                  <p text="detailText" key={index}>
+                    {val.detailText}
+                  </p>
+                ))
+              ) : (
+                <>clientText</>
+              )}
             </div>
-            <div class="row">
-              <div class="col-3">
+
+            <div className="row">
+              <div className="col-3">
                 <div
                   style={{ display: "none", width: 30 }}
-                  class="list-group"
+                  className="list-group"
                   id="list-tab"
                   role="tablist"
                 >
                   <a
-                    class="list-group-item list-group-item-action active"
+                    className="list-group-item list-group-item-action active"
                     id="list-home-list"
                     data-toggle="list"
                     href="#list-home"
@@ -64,7 +82,7 @@ const ClientsInOthers = () => {
                     UN Agencies
                   </a>{" "}
                   <a
-                    class="list-group-item list-group-item-action"
+                    className="list-group-item list-group-item-action"
                     id="list-profile-list"
                     data-toggle="list"
                     href="#list-profile"
@@ -74,7 +92,7 @@ const ClientsInOthers = () => {
                     Govermental Organizations{" "}
                   </a>
                   <a
-                    class="list-group-item list-group-item-action"
+                    className="list-group-item list-group-item-action"
                     id="list-messages-list"
                     data-toggle="list"
                     href="#list-messages"
@@ -85,15 +103,15 @@ const ClientsInOthers = () => {
                   </a>
                 </div>
               </div>
-              <div class="col-12">
-                <div class="tab-content" id="nav-tabContent">
+              <div className="col-12">
+                <div className="tab-content" id="nav-tabContent">
                   <div
-                    class="tab-pane fade show active"
+                    // className="tab-pane fade show active"
                     id="list-home"
                     role="tabpanel"
                     aria-labelledby="list-home-list"
                   >
-                    <table class="table table-striped">
+                    <table className="table table-striped">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -104,25 +122,25 @@ const ClientsInOthers = () => {
                       <tbody>
                         {forignUN.length > 0 ? (
                           forignUN.map((val, index) => (
-                            <tr text="unClients">
+                            <tr text="unClients" key={index}>
                               <td></td>
                               <td>{val.name}</td>
                               <td>{val.country}</td>
                             </tr>
                           ))
                         ) : (
-                          <>Insert forign gov clients</>
+                          <>Insert Forign UN Clients</>
                         )}
                       </tbody>
                     </table>
                   </div>
                   <div
-                    // class="tab-pane fade"
+                    // className="tab-pane fade"
                     id="list-profile"
                     role="tabpanel"
                     aria-labelledby="list-profile-list"
                   >
-                    <table class="table table-striped">
+                    <table className="table table-striped">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
@@ -133,26 +151,27 @@ const ClientsInOthers = () => {
                       <tbody>
                         {forignGov.length > 0 ? (
                           forignGov.map((val, index) => (
-                            <tr text="govClients">
+                            <tr text="govClients" key={index}>
                               <td></td>
                               <td>{val.name}</td>
                               <td>{val.country}</td>
                             </tr>
                           ))
                         ) : (
-                          <>Insert forign gov clients</>
+                          <>Insert Forign Goverment Clients</>
                         )}
                       </tbody>
                     </table>
                   </div>
                   <div
-                    // class="tab-pane fade"
+                    // className="tab-pane fade"
                     id="list-messages"
                     role="tabpanel"
                     aria-labelledby="list-messages-list"
                   >
                     <div>
-                      <table class="table table-striped">
+                      {" "}
+                      <table className="table table-striped">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -163,14 +182,14 @@ const ClientsInOthers = () => {
                         <tbody>
                           {forignNonGov.length > 0 ? (
                             forignNonGov.map((val, index) => (
-                              <tr text="nongovClients">
+                              <tr text="nongovClients" key={index}>
                                 <td></td>
                                 <td>{val.name}</td>
                                 <td>{val.country}</td>
                               </tr>
                             ))
                           ) : (
-                            <>Insert forign Nongov clients</>
+                            <>Insert Forign Non-Goverment Clients</>
                           )}
                         </tbody>
                       </table>

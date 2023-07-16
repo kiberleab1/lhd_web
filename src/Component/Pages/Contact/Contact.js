@@ -1,8 +1,7 @@
 import React, { useState, useRef } from "react";
-
-import emailjs from "@emailjs/browser";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
+import Input from "../InputFormat";
 const Contact = () => {
   const form = useRef();
   const [name, setname] = useState("");
@@ -31,61 +30,23 @@ const Contact = () => {
     Axios.post(`http://localhost:1111/lhd/Contact`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (
-        response.data.msg ===
-        `Thank you for contacting us and will respond to your quires.  Please\r\n  
-				do reach out to the following emails and we will be able to respond to 
-				you as soon as possible.
-				antenanie35@gmail.com or anduye2@gmail.com,\r\n
-        also you can contact kiberleabdemassie@gmail.com`
-      ) {
+      if (response.data.msg === `Thank you`) {
         setname("");
         setemail("");
         setmessage("");
         seterr(false);
         // // return push("/Admin/Home");
-        emailjs
-          .sendForm(
-            "service_3pv0i72",
-            "template_goh566v",
-            form.current,
-            "dvcmF-AK3PcrB5obN"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
-        emailjs
-          .sendForm(
-            "service_3pv0i72",
-            "template_raa216t",
-            form.current,
-            "dvcmF-AK3PcrB5obN"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
       } else {
         // window.location.href =
         //   "mailto:zemelatmen@gmail.com?subject='Hello from Abstract!'&body='Just popped in to say hello'";
         seterr(response.data);
       }
     });
-    e.target.reset();
   };
   return (
     <>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Contact</span>
             <br />
@@ -95,9 +56,9 @@ const Contact = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="section-header">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="section-header">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Dolores quae porro consequatur aliquam, incidunt fugiat culpa
@@ -106,10 +67,10 @@ const Contact = () => {
               </p>
             </div>
 
-            <div class="row contact-info">
-              <div class="col-lg-5">
-                <div class="contact-address">
-                  <i class="ion-ios-location-outline"></i>
+            <div className="row contact-info">
+              <div className="col-lg-5">
+                <div className="contact-address">
+                  <i className="ion-ios-location-outline"></i>
                   <h3>Address</h3>
                   <address>
                     Haile Geberselasie Road Matiyas Building(Beside lem Hotel),
@@ -122,8 +83,8 @@ const Contact = () => {
                     12727LayHill Rd,Apt #T2 <br /> Sliver Spring,MD 20906, USA{" "}
                   </address>
                 </div>
-                <div class="contact-phone">
-                  <i class="ion-ios-telephone-outline"></i>
+                <div className="contact-phone">
+                  <i className="ion-ios-telephone-outline"></i>
                   <h3>Phone Number</h3>
                   <p>
                     <a href="tel:+251">+251 909 564 185</a>
@@ -135,62 +96,63 @@ const Contact = () => {
                     <a href="tel:+251">+1 (202) 751 56</a>
                   </p>
                 </div>
-                <div class="contact-email">
-                  <i class="ion-ios-email-outline"></i>
+                <div className="contact-email">
+                  <i className="ion-ios-email-outline"></i>
                   <h3>Email</h3>
                   <p>
                     <a href="mailto:info@lhdconsult.org">info@lhdconsult.org</a>
                   </p>
                 </div>
               </div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
                     <form
                       name="sentMessage"
-                      class="well"
+                      className="well"
                       id="contactForm"
                       novalidate
                       method="POST"
                       ref={form}
                       onSubmit={submittContact}
                     >
-                      <div class="control-group">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Full Name"
+                      <div className="control-group">
+                        <div className="form-group">
+                          <Input
+                            TextType="text"
+                            InputClassName="form-control"
+                            OnPlaceHolder="Full Name"
                             id="name"
                             required
-                            name="name"
-                            onChange={getName}
-                            value={name}
+                            NameOfInput="name"
+                            OnChangingInputs={getName}
+                            ValueOfInput={name}
                           />
-                          <p class="help-block"></p>
+
+                          <p className="help-block"></p>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <div class="controls">
-                          <input
-                            type="email"
-                            class="form-control"
-                            placeholder="Email"
+                      <div className="form-group">
+                        <div className="controls">
+                          <Input
+                            TextType="email"
+                            InputClassName="form-control"
+                            OnPlaceHolder="Email"
                             id="email"
                             required
-                            name="email"
-                            onChange={getemail}
-                            value={email}
+                            NameOfInput="email"
+                            OnChangingInputs={getemail}
+                            ValueOfInput={email}
                           />
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <div class="controls">
+                      <div className="form-group">
+                        <div className="controls">
                           <textarea
                             rows="10"
                             cols="100"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Message"
                             id="message"
                             required
@@ -206,12 +168,10 @@ const Contact = () => {
                         </div>
                       </div>
                       <div id="success">{err} </div>
-                      {/* <a href="mailto:zemelatmen@gmail.com?subject='Hello from Abstract!'&body='Just popped in to say hello'">
-                        Click to Send an Email{" "}
-                      </a> */}
+
                       <button
                         type="submit"
-                        class="btn btn-primary pull-right"
+                        className="btn btn-primary pull-right"
                         // onClick={submittContact}
                       >
                         Send
@@ -225,7 +185,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div class="container mb-4 map">
+          <div className="container mb-4 map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5348696893707!2d38.78105031366575!3d9.014874493530636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b857490af8af3%3A0x979ce5703b0e5957!2sLem+Hotel!5e0!3m2!1sen!2set!4v1553023393272"
               width="100%"

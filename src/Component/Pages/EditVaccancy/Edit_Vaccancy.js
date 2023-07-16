@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import { ImCalendar } from "react-icons/im";
 
 const Edit_Vaccancy = () => {
   const [err, setErr] = useState("");
@@ -10,6 +11,7 @@ const Edit_Vaccancy = () => {
   const [position, setposition] = useState("");
   const [conditions, setconditions] = useState("");
   const [deadline, setdeadline] = useState("");
+  const [Vacc, setVacc] = useState([]);
   const getTitle = (e) => {
     settitle(e.target.value);
   };
@@ -42,8 +44,7 @@ const Edit_Vaccancy = () => {
     Axios.post("http://localhost:1111/lhd/Add_Vaccancy", formData, {
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
-      if (response.data.msg == "Vaccancy posted") {
+      if (response.data.msg === "Vaccancy posted") {
         setErr(false);
         settitle("");
         setresponsblities("");
@@ -51,14 +52,24 @@ const Edit_Vaccancy = () => {
         setposition("");
         setconditions("");
         setdeadline("");
-
+        setVacc([
+          ...Vacc,
+          {
+            title: title,
+            Qualification: Qualification,
+            responsblities: responsblities,
+            conditions: conditions,
+            position: position,
+            deadline: deadline,
+          },
+        ]);
         // return window.location.reload();
       } else {
         setErr(response.data);
       }
     });
   };
-  const [Vacc, setVacc] = useState([]);
+
   useEffect(() => {
     Axios.get(`http://localhost:1111/vaccancy/getall`, {
       withCredentials: true,
@@ -70,15 +81,13 @@ const Edit_Vaccancy = () => {
     Axios.delete(`http://localhost:1111/Admin/deleteVaccancy/${delId}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "Vacc DELETED") {
-        window.location.reload();
-      }
+      window.location.reload();
     });
   };
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Add or Edit Vaccancy </span>
             <br />
@@ -88,47 +97,59 @@ const Edit_Vaccancy = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
+        <section id="contact" className="wow fadeInUp">
           {Vacc.length > 0 ? (
             Vacc.map((val, index) => (
               <div
               //   th:each="vacc : ${vaccancys}"
               >
-                <h4 class="col-md-4 offset-md-2">TITLE:</h4>
+                <h4 className="col-md-4 offset-md-2">TITLE:</h4>
 
-                <p class="col-md-4 offset-md-3 text-dark">{val.title}</p>
-                <h4 class="col-md-4 offset-md-2">MAJOR RESPONSIBILITIES:</h4>
-                <p class="col-md-4 offset-md-3 text-dark">
+                <p className="col-md-4 offset-md-3 text-dark">{val.title}</p>
+                <h4 className="col-md-4 offset-md-2">
+                  MAJOR RESPONSIBILITIES:
+                </h4>
+                <p className="col-md-4 offset-md-3 text-dark">
                   {val.responsblities}
                 </p>
-                <h4 class="col-md-4 offset-md-2">POSTION:</h4>
-                <p class="col-md-4 offset-md-3 text-dark">{val.position}</p>
+                <h4 className="col-md-4 offset-md-2">POSTION:</h4>
+                <p className="col-md-4 offset-md-3 text-dark">{val.position}</p>
+                <div class="collapse border-none" id="collapseExample">
+                  <div class="card card-body">
+                    <h4 className="col-md-4 offset-md-2">QUALIFICATION:</h4>
+                    <p className="col-md-4 offset-md-3 text-dark">
+                      {val.Qualification}
+                    </p>
+                    <h4 className="col-md-4 offset-md-2">Conditions:</h4>
+                    <p className="col-md-4 offset-md-3 text-dark">
+                      {val.conditions}
+                    </p>
+                    <h4 className="col-md-4 offset-md-2">DeadLine:</h4>
+                    <p className="col-md-4 offset-md-3 text-dark">
+                      {val.deadline}
+                    </p>
+                    <h4 className="col-md-4 offset-md-2">Still on:</h4>
+                    <p className="col-md-4 offset-md-3 text-dark">{val.isOn}</p>
+                  </div>
+                </div>
 
-                {/* <div id="demo" class="collapse"> */}
-                <h4 class="col-md-4 offset-md-2">QUALIFICATION:</h4>
-                <p class="col-md-4 offset-md-3 text-dark">
-                  {val.Qualification}
+                <p className="container">
+                  <button
+                    class="btn btn-primary"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample"
+                    aria-expanded="false"
+                    aria-controls="collapseExample"
+                  >
+                    See more
+                  </button>
                 </p>
-                <h4 class="col-md-4 offset-md-2">Conditions:</h4>
-                <p class="col-md-4 offset-md-3 text-dark">{val.conditions}</p>
-                <h4 class="col-md-4 offset-md-2">DeadLine:</h4>
-                <p class="col-md-4 offset-md-3 text-dark">{val.deadline}</p>
-                <h4 class="col-md-4 offset-md-2">Still on:</h4>
-                <p class="col-md-4 offset-md-3 text-dark">{val.isOn}</p>
-                {/* </div> */}
-                <a
-                  class="col-md-4 offset-md-4"
-                  ass="btn btn-info"
-                  data-toggle="collapse"
-                  data-target="#demo"
-                >
-                  See More
-                </a>
 
-                <div class="col-md-4 offset-md-3" name="sentMessage">
+                <div className="col-md-4 offset-md-3" name="sentMessage">
                   <button
                     type="submit"
-                    class="btn btn-primary "
+                    className="btn btn-primary "
                     onClick={() => DeleteVacc(val.id)}
                   >
                     Delete
@@ -136,9 +157,9 @@ const Edit_Vaccancy = () => {
                   <br />
                   <br />
                 </div>
-                <div class="col-md-4 offset-md-3">
+                <div className="col-md-4 offset-md-3">
                   <Link to={`/vacc/editv/${val.id}`}>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" className="btn btn-primary">
                       Edit
                     </button>
                   </Link>
@@ -151,20 +172,20 @@ const Edit_Vaccancy = () => {
             <h4>No Vacancy</h4>
           )}
         </section>
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
-                    <form name="sentMessage" class="well" id="contactForm">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
+                    <form name="sentMessage" className="well" id="contactForm">
                       <input type="hidden" name="Id" value="Id" />
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Title"
                             id="name"
                             required
@@ -174,10 +195,10 @@ const Edit_Vaccancy = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Responsblities"
                             id="name"
@@ -188,8 +209,8 @@ const Edit_Vaccancy = () => {
                           ></textarea>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
                             class="form-control"
                             rows="8"
@@ -236,11 +257,18 @@ const Edit_Vaccancy = () => {
 
                       <div class="col-sm-6 form-group">
                         <label for="">Dead Line</label>
-                        <div>
+                        <div style={{ position: "relative" }}>
+                          <span
+                            class="fa fa-calendar icon"
+                            style={{ position: "absolute", right: 10, top: 10 }}
+                          >
+                            {" "}
+                            <ImCalendar />
+                          </span>
                           <input
                             type="text"
                             name="deadline"
-                            class="form-control"
+                            className="form-control"
                             id="departure_date"
                             onChange={getDeadline}
                             value={deadline}
@@ -250,12 +278,12 @@ const Edit_Vaccancy = () => {
                     </form>
                   </div>
 
-                  <div className="text-danger">{err}</div>
+                  <div classNameName="text-danger">{err}</div>
                   <br />
 
                   <button
                     type="submit"
-                    class="btn btn-primary pull-right"
+                    className="btn btn-primary pull-right"
                     onClick={submittVaccancy}
                   >
                     Post

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import Axios from "axios";
 const EditTestimones = () => {
@@ -69,9 +69,9 @@ const EditTestimones = () => {
     Axios.put(`http://localhost:1111/Admin/editTeam/${id}`, formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg == "TEAM updated") {
+      if (response.data.msg === "TEAM updated") {
         setTeamerr(false);
-        return push("/Admin/Home");
+        return push("/Admin/editAbout");
       } else {
         setTeamerr(response.data);
       }
@@ -80,20 +80,20 @@ const EditTestimones = () => {
 
   return (
     <div>
-      <section id="contact" class="wow fadeInUp">
-        <div class="container">
-          <div class="row contact-info">
-            <div class="col-lg-5"></div>
-            <div class="col-lg-7">
-              <div class="container">
-                <div class="form">
-                  <form class="well" id="contactForm">
+      <section id="contact" className="wow fadeInUp">
+        <div className="container">
+          <div className="row contact-info">
+            <div className="col-lg-5"></div>
+            <div className="col-lg-7">
+              <div className="container">
+                <div className="form">
+                  <form className="well" id="contactForm">
                     {/* <input type="hidden" name="Id" th:value="*{Id}" /> */}
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Frist Name"
                           id="name"
                           required
@@ -104,11 +104,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Last Name"
                           id="name"
                           required
@@ -119,11 +119,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Authority"
                           id="name"
                           required
@@ -134,11 +134,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Qualification"
                           id="name"
                           required
@@ -150,11 +150,11 @@ const EditTestimones = () => {
                       </div>
                     </div>
 
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Link to facebook  Account"
                           id="name"
                           required
@@ -165,11 +165,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Link to tewiter  Account"
                           id="name"
                           required
@@ -180,11 +180,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Link to Google+  Account"
                           id="name"
                           required
@@ -195,11 +195,11 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Link to LinkdIn  Account"
                           id="name"
                           required
@@ -210,13 +210,13 @@ const EditTestimones = () => {
                         />
                       </div>
                     </div>
-                    <div class="control-group">
-                      <div class="form-group">
+                    <div className="control-group">
+                      <div className="form-group">
                         <input
                           type="file"
                           // Accept="image/*"
                           name="img"
-                          class="form-control"
+                          className="form-control"
                           id="img"
                           // value={Img}
                           ref={inputRef}
@@ -232,7 +232,7 @@ const EditTestimones = () => {
 
                     <button
                       type="submit"
-                      class="btn btn-primary pull-right"
+                      className="btn btn-primary pull-right"
                       onClick={submittTeam}
                     >
                       Add

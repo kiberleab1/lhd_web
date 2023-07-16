@@ -18,40 +18,40 @@ const CollapsibleExample = () => {
     <div>
       <>
         <section id="topbar">
-          <div class="container clearfix">
-            <div class="contact-info float-left">
+          <div className="container clearfix">
+            <div className="contact-info float-left">
               <FontAwesomeIcon icon={faEnvelopeOpen} />
-              <a href="mailto:contact@example.com">name@websitename.com</a>
+              <a>name@websitename.com</a>
               <FontAwesomeIcon icon={faPhone} />
               +1 2345 67855 22
             </div>
-            <div class="social-links float-right">
-              <a href="/instaadress" class="twitter">
+            <div className="social-links float-right">
+              <a href="/instaadress" className="twitter">
                 {/* <FontAwesomeIcon icon={faTwitter} /> */}
               </a>
-              <a href="/instaadress" class="facebook">
+              <a href="/instaadress" className="facebook">
                 {/* <FontAwesomeIcon icon={faFaceBook} /> */}
-                <i class="fa fa-facebook"></i>
+                <i className="fa fa-facebook"></i>
               </a>
-              <a href="/instaadress" class="google-plus">
+              <a href="/instaadress" className="google-plus">
                 {/* <FontAwesomeIcon icon={faGooglePlus} /> */}
               </a>
-              <a href="/instaadress" class="linkedin">
+              <a href="/instaadress" className="linkedin">
                 {/* <FontAwesomeIcon icon={faLinkedin} /> */}
               </a>
-              <a href="/instaadress" class="instagram">
+              <a href="/instaadress" className="instagram">
                 {/* <FontAwesomeIcon icon={faInstagram} /> */}
               </a>
             </div>
           </div>
         </section>
         <header id="header">
-          <div class="container">
-            <div id="logo" class="pull-left">
+          <div className="container">
+            <div id="logo" className="pull-left">
               <h1>
-                <a href="/lhd/home" class="scrollto">
-                  <i class="icon">
-                    <img src={Logo} width="50" alt="logo" title="" />
+                <a href="/lhd/home" className="scrollto">
+                  <i className="icon">
+                    <img src={Logo} width="50" alt="logos" />
                   </i>
                   Le Monde
                 </a>
@@ -59,7 +59,7 @@ const CollapsibleExample = () => {
             </div>
 
             <nav id="nav-menu-container">
-              <ul class="nav-menu">
+              <ul className="nav-menu">
                 <li>
                   <NavLink to="/lhd/Home">Home</NavLink>
                 </li>
@@ -72,7 +72,7 @@ const CollapsibleExample = () => {
                 <li>
                   <NavLink to="/lhd/Experiance">Experience</NavLink>
                 </li>
-                <li class="menu-has-children">
+                <li className="menu-has-children">
                   <>Clients</>
                   <ul>
                     <li>

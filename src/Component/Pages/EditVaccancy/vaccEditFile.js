@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Axios from "axios";
 
 const Edit_Vaccancy = () => {
@@ -45,7 +45,7 @@ const Edit_Vaccancy = () => {
       withCredentials: true,
     }).then((response) => {
       console.log(response.data);
-      if (response.data.msg == "UPDATED") {
+      if (response.data.msg === "UPDATED") {
         return push("/Admin/editVaccancy");
         // return window.location.reload();
       } else {
@@ -65,12 +65,12 @@ const Edit_Vaccancy = () => {
       setdeadline(response.data.deadline);
       setErr("");
     });
-  }, []);
+  }, [id]);
 
   return (
     <div>
       <section id="innerBanner">
-        <div class="inner-content">
+        <div className="inner-content">
           <h2>
             <span>Add or Edit Vaccancy </span>
             <br />
@@ -80,20 +80,20 @@ const Edit_Vaccancy = () => {
         </div>
       </section>
       <main id="main">
-        <section id="contact" class="wow fadeInUp">
-          <div class="container">
-            <div class="row contact-info">
-              <div class="col-lg-5"></div>
-              <div class="col-lg-7">
-                <div class="container">
-                  <div class="form">
-                    <form name="sentMessage" class="well" id="contactForm">
+        <section id="contact" className="wow fadeInUp">
+          <div className="container">
+            <div className="row contact-info">
+              <div className="col-lg-5"></div>
+              <div className="col-lg-7">
+                <div className="container">
+                  <div className="form">
+                    <form name="sentMessage" className="well" id="contactForm">
                       <input type="hidden" name="Id" value="Id" />
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <input
                             type="text"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Title"
                             id="name"
                             required
@@ -103,10 +103,10 @@ const Edit_Vaccancy = () => {
                           />
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Responsblities"
                             id="name"
@@ -117,10 +117,10 @@ const Edit_Vaccancy = () => {
                           ></textarea>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Qualifications"
                             id="name"
@@ -131,10 +131,10 @@ const Edit_Vaccancy = () => {
                           ></textarea>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Position"
                             id="name"
@@ -145,10 +145,10 @@ const Edit_Vaccancy = () => {
                           ></textarea>
                         </div>
                       </div>
-                      <div class="control-group">
-                        <div class="form-group">
+                      <div className="control-group">
+                        <div className="form-group">
                           <textarea
-                            class="form-control"
+                            className="form-control"
                             rows="8"
                             placeholder="Conditions"
                             id="name"
@@ -157,19 +157,19 @@ const Edit_Vaccancy = () => {
                             onChange={getConditions}
                             value={conditions}
                           ></textarea>
-                          {/* <span class="text-danger"
+                          {/* <span className="text-danger"
                                                     th:if="${#fields.hasErrors('conditions')}"
                                                     th:errors="*{conditions}">Last Name Error </span> */}
                         </div>
                       </div>
 
-                      <div class="col-sm-6 form-group">
+                      <div className="col-sm-6 form-group">
                         <label for="">Dead Line</label>
                         <div>
                           <input
                             type="text"
                             name="deadline"
-                            class="form-control"
+                            className="form-control"
                             id="departure_date"
                             onChange={getDeadline}
                             value={deadline}
@@ -179,12 +179,12 @@ const Edit_Vaccancy = () => {
                     </form>
                   </div>
 
-                  <div className="text-danger">{err}</div>
+                  <div classNameName="text-danger">{err}</div>
                   <br />
 
                   <button
                     type="submit"
-                    class="btn btn-primary pull-right"
+                    className="btn btn-primary pull-right"
                     onClick={submittVaccancy}
                   >
                     Post
