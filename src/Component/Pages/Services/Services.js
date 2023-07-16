@@ -3,6 +3,7 @@ import Axios from "axios";
 import Footer from "../../Footer/Footer";
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+
 const Services = () => {
   const [Services, setServices] = useState([]);
   const [clients, setclients] = useState([]);
@@ -34,7 +35,7 @@ const Services = () => {
     Axios.get(`http://localhost:1111/client/about`, {
       withCredentials: true,
     }).then((response) => {
-      setClintOther(response.data);
+      setClintOther([response.data]);
     });
   }, []);
 
@@ -122,7 +123,11 @@ const Services = () => {
 
                 {serOtherText.length > 0 ? (
                   serOtherText.map((val, index) => (
-                    <p className="cta-text" key={index}>
+                    <p
+                      className="cta-text"
+                      style={{ color: "black" }}
+                      key={index}
+                    >
                       {val.detailText}
                     </p>
                   ))

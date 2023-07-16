@@ -249,7 +249,7 @@ const About = () => {
                       </p>
                     ))
                   ) : (
-                    <>Add OperationalCapacity</>
+                    <p style={{ color: "black" }}>Add OperationalCapacity</p>
                   )}
                 </div>
               </div>
@@ -289,7 +289,11 @@ const About = () => {
                   <h3 className="cta-title">Get Our Service</h3>
                   {serOtherText.length > 0 ? (
                     serOtherText.map((val, index) => (
-                      <p className="cta-text" key={index}>
+                      <p
+                        className="cta-text"
+                        style={{ color: "black" }}
+                        key={index}
+                      >
                         {val.detailText}
                       </p>
                     ))

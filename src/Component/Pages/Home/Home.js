@@ -69,15 +69,18 @@ const Home = () => {
             <div className="section-header">
               <h2>Services</h2>
               {serviceOther.length > 0 ? (
-                serviceOther.map((val, index) => <p>{val.detailText}</p>)
+                serviceOther.map((val, index) => (
+                  <p key={index}>{val.detailText}</p>
+                ))
               ) : (
                 <div className="container">Add Single Services</div>
               )}
             </div>
-            {service.length > 0 ? (
-              service.map((val, index) => (
-                <div className="row" key={index}>
-                  <div className="col-lg-4">
+
+            <div className="row">
+              {service.length > 0 ? (
+                service.map((val, index) => (
+                  <div className="col-lg-4" key={index}>
                     <div className="box wow fadeInLeft">
                       <div className="icon">
                         <FontAwesomeIcon icon={faBriefcase} />
@@ -87,14 +90,14 @@ const Home = () => {
                           {val.serviceName}
                         </Link>
                       </h4>
-                      <p className="description text-dark">{val.detailText}</p>
+                      <p className="description">{val.detailText}</p>
                     </div>
                   </div>
-                </div>
-              ))
-            ) : (
-              <div className="container">Add All Services</div>
-            )}
+                ))
+              ) : (
+                <div className="container">Add All Services</div>
+              )}
+            </div>
           </div>
         </section>
         <section id="call-to-action" className="wow fadeInUp">
@@ -135,3 +138,27 @@ const Home = () => {
 };
 
 export default Home;
+
+//  {
+//    service.length > 0 ? (
+//      service.map((val, index) => (
+//        <div className="row" key={index}>
+//          <div className="col-lg-4">
+//            <div className="box wow fadeInLeft">
+//              <div className="icon">
+//                <FontAwesomeIcon icon={faBriefcase} />
+//              </div>
+//              <h4 className="title">
+//  <Link to={`/lhd/services/${val.serviceName}`}>
+//    {val.serviceName}
+//  </Link>
+//              </h4>
+//              <p className="description text-dark">{val.detailText}</p>
+//            </div>
+//          </div>
+//        </div>
+//      ))
+//    ) : (
+//      <div className="container">Add All Services</div>
+//    );
+//  }

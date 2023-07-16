@@ -1,4 +1,4 @@
-import "./App.css";
+// import "./App.css";
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrivateRoutes from "./Component/PrivateRoute";

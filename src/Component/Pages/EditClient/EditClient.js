@@ -90,6 +90,7 @@ const EditClient = () => {
             country: country,
           },
         ]);
+        setcliImg([...cliImg]);
       } else {
         setErr(response.data);
       }
@@ -160,7 +161,6 @@ const EditClient = () => {
         withCredentials: true,
       }
     ).then((response) => {
-      console.log(response.data);
       if (response.data.msg === "OtherTexts POSTED") {
         setclintErr(false);
         setclintText("");

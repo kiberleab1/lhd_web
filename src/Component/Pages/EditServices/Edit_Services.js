@@ -4,7 +4,7 @@ import { BsBriefcase } from "react-icons/bs";
 import Axios from "axios";
 const Edit_Services = () => {
   const inputRef = useRef(null);
-  const [all, setAllService] = useState([]);
+  const [all, setAllService] = useState("");
   const [serviceName, setServiceName] = useState("");
   const [detailText, setDetailText] = useState("");
   const [img, setImg] = useState("");

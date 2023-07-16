@@ -10,6 +10,7 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 const TeamMember = () => {
   const inputRef = useRef(null);
   const [team, setTeam] = useState([]);
+
   const [teamERR, setTeamerr] = useState("");
   const [Fname, setFname] = useState("");
   const [Lname, setLname] = useState("");
@@ -47,7 +48,7 @@ const TeamMember = () => {
     Axios.post("http://localhost:1111/register_TeamMembers", formData, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg === "NEW TEAM MEMBER ADD") {
+      if (response.data.msg == "ADD") {
         setTeamerr(false);
         setFname("");
         setLname("");
@@ -58,34 +59,27 @@ const TeamMember = () => {
         setGooglePlus("");
         setLinkdon("");
         inputRef.current.value = null;
-        // setTeam([
-        //   ...team,
-        //   {
-        //     fristName: Fname,
-        //     lastName: Lname,
-        //     qualification: Qualification,
-        //     authority: Authority,
-        //     twiter: Twiter,
-        //     facebook: Facebook,
-        //     googlePlus: GooglePlus,
-        //     linkdon: Linkdon,
-        //   },
-        // ]);
-        // return window.location.reload();
       } else {
         setTeamerr(response.data);
       }
     });
+    setTeam([...team]);
+    // {
+    //     fristName: Fname,
+    //     lastName: Lname,
+    //     qualification: Qualification,
+    //     authority: Authority,
+    //     twiter: Twiter,
+    //     facebook: Facebook,
+    //     googlePlus: GooglePlus,
+    //     linkdon: Linkdon,
+    //   },
   };
   useEffect(() => {
     Axios.get(`http://localhost:1111/all/Team`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data == null) {
-        console.log("null");
-      } else {
-        setTeam(response.data);
-      }
+      setTeam(response.data);
     });
   }, []);
   const DeleteTeam = (vall) => {

@@ -11,6 +11,7 @@ const Edit_Vaccancy = () => {
   const [position, setposition] = useState("");
   const [conditions, setconditions] = useState("");
   const [deadline, setdeadline] = useState("");
+  const [Vacc, setVacc] = useState([]);
   const getTitle = (e) => {
     settitle(e.target.value);
   };
@@ -43,7 +44,6 @@ const Edit_Vaccancy = () => {
     Axios.post("http://localhost:1111/lhd/Add_Vaccancy", formData, {
       withCredentials: true,
     }).then((response) => {
-      console.log(response.data);
       if (response.data.msg === "Vaccancy posted") {
         setErr(false);
         settitle("");
@@ -52,14 +52,24 @@ const Edit_Vaccancy = () => {
         setposition("");
         setconditions("");
         setdeadline("");
-
+        setVacc([
+          ...Vacc,
+          {
+            title: title,
+            Qualification: Qualification,
+            responsblities: responsblities,
+            conditions: conditions,
+            position: position,
+            deadline: deadline,
+          },
+        ]);
         // return window.location.reload();
       } else {
         setErr(response.data);
       }
     });
   };
-  const [Vacc, setVacc] = useState([]);
+
   useEffect(() => {
     Axios.get(`http://localhost:1111/vaccancy/getall`, {
       withCredentials: true,
@@ -71,9 +81,7 @@ const Edit_Vaccancy = () => {
     Axios.delete(`http://localhost:1111/Admin/deleteVaccancy/${delId}`, {
       withCredentials: true,
     }).then((response) => {
-      if (response.data.msg === "Vacc DELETED") {
-        window.location.reload();
-      }
+      window.location.reload();
     });
   };
   return (
