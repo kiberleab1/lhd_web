@@ -63,6 +63,7 @@ const Vaccancy = () => {
             ass="btn btn-info"
             data-toggle="collapse"
             data-target="#demo"
+            href=""
           >
             See More
           </a>
